@@ -1,5 +1,5 @@
 import atomicLogo from '../assets/atomicLogo.png'
-import cnv from '../assets/cnv.png'
+import cnv from '../cnv.png'
 import facebook from '../assets/social_networks/facebook.png'
 import instagram from '../assets/social_networks/instagram.png'
 import linkedin from '../assets/social_networks/linkedin.png'
