@@ -3,7 +3,7 @@ import energy from '../assets/energy.png';
 import investors from '../assets/Investors.png';
 import platform from '../assets/platform.png';
 import at3 from '../assets/pruebas/p1.jpeg';
-import partner1 from '../assets/partners/partner1.png'; // Asegúrate de tener estas imágenes
+import partner1 from '../assets/partners/partner1.png';
 import partner2 from '../assets/partners/partner2.png';
 import migration1 from '../assets/migration/migration1.png';
 import migration2 from '../assets/migration/migration2.png';
@@ -43,30 +43,29 @@ export const AtomicInfo = () => {
               </p>
             </div>
 
-            {/* Iframe al lado del texto */}
             <div className="md:w-1/3 mt-8 md:mt-0">
               <h2 className="text-2xl font-bold text-celeste mb-4 text-center">COMPRA ATOMICO 3</h2>
               <div className="relative" style={{ 
                 width: '150%', 
                 height: '20', 
-                paddingBottom: '200%', // Ajusta la relación de aspecto según sea necesario
+                paddingBottom: '200%',
                 borderRadius: '35px', 
                 overflow: 'hidden' 
               }}>
                 <iframe
-                  src="https://atomico5desc.vercel.app/"
-                  title="Atomico3 Swap"
+                  src="https://at3staking.vercel.app/"
+                  title="Atomico3 Compra-Staking"
                   style={{
                     position: 'absolute',
-                    top: '2',
-                    left: '2',
+                    top: '0',
+                    left: '0',
                     width: '100%',
                     height: '100%',
                     border: 'none',
                     borderRadius: '35px',
                     backgroundColor: 'transparent',
                   }}
-                  allow="ethereum" // Permitir interacciones con MetaMask
+                  allow="ethereum"
                 />
               </div>
             </div>
@@ -76,6 +75,22 @@ export const AtomicInfo = () => {
         {/* Sección de MIGRACIÓN A */}
         <div className="mt-20 px-4">
           <h2 className="text-3xl font-bold text-celeste text-center mb-8">MIGRACIÓN A</h2>
+          
+          <div className="max-w-4xl mx-auto mb-12 text-black">
+            <p className="text-base text-justify mb-4">
+              Nos complace anunciar un paso fundamental para el ecosistema de Atómico3.
+            </p>
+            <p className="text-base text-justify mb-4">
+              En colaboración con nuestro socio tecnológico, ZenGate Global, hemos decidido trabajar juntos para hacer evolucionar al token de Atomico3 (hacia un token algorítmico), por estar su precio fijado no ya por un stable coin sino basado en el precio del litio como commodity.
+            </p>
+            <p className="text-base text-justify mb-4">
+              Esta alianza estratégica nos va a permitir migrar y llevar a Atomico3 desde la red Polygon a la red Cardano.
+            </p>
+            <p className="text-base text-justify mb-4">
+              Este movimiento nos permite aprovechar sus capacidades avanzadas, para introducir la tokenizacion (novedoso mecanismo de financiamiento para activos mineros), utilizando tecnología de tokens algorítmicos, respaldada por reservas de litio certificadas ajustadas por el valor del litio.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div className="flex flex-col items-center">
               <img src={migration1} alt="Migración 1" className="w-48 mb-4" />
@@ -110,21 +125,15 @@ export const AtomicInfo = () => {
         </div>
 
         <div className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 px-4 bg-white">
-          <a
-            className="bg-white block rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default"
-            href="#"
-          >
-            <img src={energy} alt="Energy" className name='w-12' />
+          <a className="bg-white block rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default" href="#">
+            <img src={energy} alt="Energy" className='w-12' />
             <h2 className="mt-4 text-lg sm:text-xl font-bold text-celeste">{t("atomicInfo.criptoactivo responsable")}</h2>
             <p className="mt-1 text-sm text-black">
               {t("atomicInfo.criptoactivo responsable descripcion")}
             </p>
           </a>
 
-          <a
-            className="bg-white block rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default"
-            href="#"
-          >
+          <a className="bg-white block rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default" href="#">
             <img src={investors} alt="Investors" className='w-12' />
             <h2 className="mt-4 text-lg sm:text-xl font-bold text-celeste">{t("atomicInfo.mercado objetivo")}</h2>
             <p className="mt-1 text-sm text-black">
@@ -132,10 +141,7 @@ export const AtomicInfo = () => {
             </p>
           </a>
 
-          <a
-            className="bg-white block rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default"
-            href="#"
-          >
+          <a className="bg-white block rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default" href="#">
             <img src={platform} alt="Platform" className='w-12' />
             <h2 className="mt-4 text-lg sm:text-xl font-bold text-celeste">{t("atomicInfo.plataformas utilizadas")}</h2>
             <p className="mt-1 text-sm text-black">
