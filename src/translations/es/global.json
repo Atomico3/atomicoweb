@@ -57,7 +57,7 @@
   },
     "header": {
         "bienvenido": "Bienvenido a Atómico3",
-        "criptoactivo": "Nos complace anunciar un paso fundamental para el ecosistema de Atomico3. En colaboración con nuestro socio tecnológico, ZenGate Global, hemos decidido migrar el contrato actual de Atomico3 desde la red Polygon a la red Cardano ZenGate Global está a la vanguardia de la innovación en Cardano, y este movimiento nos permite aprovechar sus capacidades avanzadas para introducir un mecanismo de financiamiento para activos mineros utilizando tecnología de tokens algorítmicos, respaldada por reservas de litio Los actuales poseedores de Atomico3 conservarán su participación en el nuevo contrato basado en Cardano. Este contrato está diseñado para tokenizar activos mineros de manera efectiva, asegurando que la emisión de tokens esté respaldada por dichos activos, mientras opera en una red altamente segura y transparente que protege los intereses de la industria.",
+        "criptoactivo": "El primer token (RWA) basado en el litio como subyacente, por estar creado totalmente en base a reservas de litio certificadas",
         "feliz primavera": "¡Feliz Primavera!",
         "comprar token": "Comprar Token",
         "staking": "staking"
