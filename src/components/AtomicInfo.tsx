@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import energy from '../assets/energy.png';
 import investors from '../assets/Investors.png';
@@ -8,11 +9,105 @@ import partner2 from '../assets/partners/partner2.png';
 import migration1 from '../assets/migration/migration1.png';
 import migration2 from '../assets/migration/migration2.png';
 
-export const AtomicInfo = () => {
+// Welcome Popup
+const WelcomePopup: React.FC = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 500);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-500 
+      ${isClosing ? 'opacity-0' : 'opacity-100'}`}>
+      <div 
+        className={`absolute inset-0 backdrop-blur-sm bg-black/30 transition-opacity duration-500
+        ${isClosing ? 'opacity-0' : 'opacity-100'}`} 
+        onClick={handleClose}
+      />
+      
+      <div 
+        className={`relative bg-gradient-to-br from-white via-blue-50 to-blue-100 
+          rounded-2xl p-12 max-w-4xl w-full mx-4 text-center shadow-2xl
+          transform transition-all duration-500 ease-in-out
+          ${isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}
+          ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
+      >
+        <button
+          onClick={handleClose}
+          className="absolute top-6 right-6 text-gray-400 hover:text-blue-600 transition-colors duration-300
+            transform hover:scale-110 hover:rotate-180 transition-transform duration-300"
+        >
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <h2 className="text-4xl font-bold mb-10 bg-gradient-to-r from-blue-600 to-blue-400 
+          bg-clip-text text-transparent">
+          BIENVENIDO A ATOMICO 3
+        </h2>
+
+        <div className="mb-12 space-y-6">
+          <p className="text-xl text-gray-700 font-medium mb-8">
+            EN EL SIGUIENTE ENLACE PODRAS COMPRAR NUEVOS ATOMICOS CON UN BONUS EXTRA EN STAKING AUTOMATICO
+          </p>
+
+          <a
+            href="https://at3staking.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-400 
+              text-white rounded-xl hover:from-blue-700 hover:to-blue-500 transform hover:-translate-y-1 
+              transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            Compra-stakeBonus
+          </a>
+        </div>
+
+        <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent mx-auto mb-12" />
+
+        <div className="space-y-6">
+          <p className="text-xl text-gray-700 font-medium mb-8">
+            SI YA TENES ATOMICOS PODES INGRESAR AL SIGUIENTE ENLACE PARA HACER STAKING Y GENERAR RECOMPENSAS MIENTRAS ESPERAS LA MIGRACION A CARDANO
+          </p>
+
+          <a
+            href="https://dapp-at-3.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
+              text-white rounded-xl hover:from-blue-500 hover:to-blue-700 transform hover:-translate-y-1 
+              transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
+            STAKING
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const AtomicInfo: React.FC = () => {
   const [t] = useTranslation("global");
 
   return (
     <>
+      <WelcomePopup />
       <section className="relative text-white bg-white pb-7">
         <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8 overflow-hidden bg-cover bg-no-repeat p-8 md:p-12 lg:px-16 lg:py-24"
           style={{
@@ -151,5 +246,5 @@ export const AtomicInfo = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
