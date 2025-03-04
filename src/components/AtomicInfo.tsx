@@ -87,7 +87,7 @@ const WelcomePopup: React.FC = () => {
           </p>
 
           <a
-            href="https://dapp-at-3.vercel.app/"
+            href="https://atomico3dapp.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
