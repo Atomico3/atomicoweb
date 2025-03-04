@@ -42,9 +42,24 @@ const FloatingButton = () => {
       : "165.50";
     
     return [
-      { text: `AT3 price = ${price} USD`, language: "English" },
-      { text: `AT3 precio = ${price} USD`, language: "Spanish" },
-      { text: `AT3 preço = ${price} USD`, language: "Portuguese" }
+      { 
+        text: <span dangerouslySetInnerHTML={{ 
+          __html: `ATOMICO 3 CARDANO<br>AT3 price = ${price} USD` 
+        }} />, 
+        language: "English" 
+      },
+      { 
+        text: <span dangerouslySetInnerHTML={{ 
+          __html: `ATOMICO 3 CARDANO<br>AT3 precio = ${price} USD` 
+        }} />, 
+        language: "Spanish" 
+      },
+      { 
+        text: <span dangerouslySetInnerHTML={{ 
+          __html: `ATOMICO 3 CARDANO<br>AT3 preço = ${price} USD` 
+        }} />, 
+        language: "Portuguese" 
+      }
     ];
   }, [lithiumPrice]);
 
