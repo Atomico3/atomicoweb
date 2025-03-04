@@ -1,5 +1,16 @@
 import pablo from '../../assets/team/Pablo.jpg'
 import ezequiel from '../../assets/team/Ezequiel.jpg'
+import luis from '../../assets/team/luis.jpg'
+import ricardo from '../../assets/team/ricardo.jpg'
+import carlos from '../../assets/team/carlos.jpg'
+import andrea from '../../assets/team/andrea.jpg'
+import juan from '../../assets/team/juan.jpg'
+import walter from '../../assets/team/walter.jpg'
+import franco from '../../assets/team/franco.jpg'
+import diego from '../../assets/team/diego.jpg'
+import johon from '../../assets/team/johon.jpg'
+import jorge from '../../assets/team/jorge.jpg'
+import lizzeth from '../../assets/team/lizzeth.jpg'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
@@ -56,7 +67,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
         t("team.ezequiel_achievement2"),
         t("team.ezequiel_achievement3")
       ],
-      imagen: ezequiel,
+      imagen: Ezequiel,
       alt: "Ezequiel Canclini",
       socialLinks: {
         linkedin: "https://linkedin.com/in/ezequielcanclini",
@@ -66,185 +77,203 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     },
     {
       id: 3,
-      nombre: "María Rodríguez",
-      puesto: t("team.cto") || "Chief Technology Officer",
-      bio: t("team.maria_bio") || "Tech visionary with 12+ years in blockchain architecture. Leading our technology innovation and development strategies.",
+      nombre: "Luis Gomez",
+      puesto: t("team.cto") || "CTO",
+      bio: t("team.luis_bio") || "..",
       achievements: [
         t("team.maria_achievement1") || "Led development of several groundbreaking blockchain platforms",
         t("team.maria_achievement2") || "Patent holder for innovative distributed ledger solutions",
         t("team.maria_achievement3") || "Former tech advisor to multiple successful crypto startups"
       ],
-      imagen: null,
-      alt: "María Rodríguez",
+      imagen: luis,
+      alt: "Luis Gómez",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/mariarodriguez",
-        twitter: "https://twitter.com/mariarodriguez",
-        email: "maria@atomicocompany.com"
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
+        email: "lgomez@atomico3.io"
       }
     },
     {
       id: 4,
-      nombre: "Carlos Méndez",
+      nombre: "Ricardo De Seta",
       puesto: t("team.cfo") || "Chief Financial Officer",
-      bio: t("team.carlos_bio") || "Financial expert with extensive experience in investment banking and crypto assets management.",
+      bio: t("team.ricardo_bio") || "Financial expert with extensive experience in investment banking and crypto assets management.",
       achievements: [
         t("team.carlos_achievement1") || "Former investment director at a major global financial institution",
         t("team.carlos_achievement2") || "Managed over $500M in crypto assets",
         t("team.carlos_achievement3") || "Helped structure financial models for 10+ successful token offerings"
       ],
-      imagen: null,
-      alt: "Carlos Méndez",
+      imagen: ricardo,
+      alt: "Ricardo De Seta",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/carlosmendez",
+        linkedin: "https://linkedin.com/in/",
         email: "carlos@atomicocompany.com"
       }
     },
     {
       id: 5,
-      nombre: "Laura Gutiérrez",
-      puesto: t("team.coo") || "Chief Operating Officer",
-      bio: t("team.laura_bio") || "Operations specialist with a track record of optimizing business processes and scaling fintech companies.",
+      nombre: "Diego Roldán",
+      puesto: t("team.coo") || "C",
+      bio: t("team.diego_bio") || "Operations specialist with a track record of optimizing business processes and scaling fintech companies.",
       achievements: [
         t("team.laura_achievement1") || "Scaled operations at previous fintech from 20 to 200 employees",
         t("team.laura_achievement2") || "Implemented efficient operational protocols that reduced costs by 30%",
         t("team.laura_achievement3") || "Led successful integrations of 3 acquired companies"
       ],
-      imagen: null,
-      alt: "Laura Gutiérrez",
+      imagen: diego,
+      alt: "Diego Roldán",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/lauragutierrez",
-        twitter: "https://twitter.com/lauragutierrez",
-        email: "laura@atomicocompany.com"
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
+        email: "droldan@atomi3.io"
       }
     },
     {
       id: 6,
-      nombre: "Alejandro Torres",
+      nombre: "Andrea Natali",
       puesto: t("team.legal_head") || "Head of Legal & Compliance",
-      bio: t("team.alejandro_bio") || "Legal expert specializing in blockchain regulatory frameworks and international financial law.",
+      bio: t("team.andrea_bio") || "Legal expert specializing in blockchain regulatory frameworks and international financial law.",
       achievements: [
         t("team.alejandro_achievement1") || "Helped develop regulatory frameworks for digital assets in multiple jurisdictions",
         t("team.alejandro_achievement2") || "Former advisor to central banks on digital currency regulations",
         t("team.alejandro_achievement3") || "Published author on blockchain legal implications"
       ],
-      imagen: null,
-      alt: "Alejandro Torres",
+      imagen: andrea,
+      alt: "Andrea Natali",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/alejandrotorres",
-        email: "alejandro@atomicocompany.com"
+        linkedin: "https://linkedin.com/in/",
+        email: "andrea@atomicocompany.com"
       }
     },
     {
       id: 7,
-      nombre: "Valentina Pérez",
+      nombre: "Walter Binda",
       puesto: t("team.biz_dev_head") || "Head of Business Development",
-      bio: t("team.valentina_bio") || "Strategic partnership expert with deep connections in the financial and technology sectors.",
+      bio: t("team.walter_bio") || "Strategic partnership expert with deep connections in the financial and technology sectors.",
       achievements: [
         t("team.valentina_achievement1") || "Secured partnerships with 5 major financial institutions",
         t("team.valentina_achievement2") || "Expanded company operations into 3 new international markets",
         t("team.valentina_achievement3") || "Generated over $10M in new business through strategic alliances"
       ],
-      imagen: null,
-      alt: "Valentina Pérez",
+      imagen: walter,
+      alt: "Walter Binda",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/valentinaperez",
-        twitter: "https://twitter.com/valentinaperez",
-        email: "valentina@atomicocompany.com"
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
+        email: "walter@atomicocompany.com"
       }
     },
     {
       id: 8,
-      nombre: "Matías González",
-      puesto: t("team.lead_engineer") || "Lead Blockchain Engineer",
-      bio: t("team.matias_bio") || "Technical genius behind our core blockchain architecture with expertise in smart contracts and distributed systems.",
+      nombre: "Juan",
+      puesto: t("team.lead_engineer") || "Lead ",
+      bio: t("team.juan_bio") || "Technical genius behind our core blockchain architecture with expertise in smart contracts and distributed systems.",
       achievements: [
         t("team.matias_achievement1") || "Developed innovative consensus mechanism for high-throughput transactions",
         t("team.matias_achievement2") || "Contributor to multiple open-source blockchain projects",
         t("team.matias_achievement3") || "Created custom smart contract framework used by leading DeFi platforms"
       ],
-      imagen: null,
-      alt: "Matías González",
+      imagen: juan,
+      alt: "Juan",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/matiasgonzalez",
-        twitter: "https://twitter.com/matiasgonzalez",
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
         email: "matias@atomicocompany.com"
       }
     },
     {
       id: 9,
-      nombre: "Sofia Ramírez",
-      puesto: t("team.marketing_head") || "Head of Marketing & Communications",
-      bio: t("team.sofia_bio") || "Creative marketing strategist specializing in blockchain and fintech brand development.",
+      nombre: "Carlos Attias",
+      puesto: t("team.marketing_head") || ".",
+      bio: t("team.carlos_bio") || "Creative marketing strategist specializing in blockchain and fintech brand development.",
       achievements: [
         t("team.sofia_achievement1") || "Led marketing campaigns that increased user acquisition by 200%",
         t("team.sofia_achievement2") || "Established company as thought leader through strategic content initiatives",
         t("team.sofia_achievement3") || "Organized successful blockchain education events with 10,000+ attendees"
       ],
-      imagen: null,
-      alt: "Sofia Ramírez",
+      imagen: carlos,
+      alt: "Carlos Attias",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/sofiaramirez",
-        twitter: "https://twitter.com/sofiaramirez",
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
         email: "sofia@atomicocompany.com"
       }
     }
+     {
+      id: 10,
+      nombre: "Franco Rutigliano",
+      puesto: t("team.lead_engineer") || "Lead ",
+      bio: t("team.franco_bio") || "Technical genius behind our core blockchain architecture with expertise in smart contracts and distributed systems.",
+      achievements: [
+        t("team.matias_achievement1") || "Developed innovative consensus mechanism for high-throughput transactions",
+        t("team.matias_achievement2") || "Contributor to multiple open-source blockchain projects",
+        t("team.matias_achievement3") || "Created custom smart contract framework used by leading DeFi platforms"
+      ],
+      imagen: franco,
+      alt: "Franco Rutigliano",
+      socialLinks: {
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
+        email: "franco@atomicocompany.com"
+      }
+    },
   ];
   
   // Commercial Partners data
   const commercialPartners = [
     {
-      id: 10,
-      nombre: "Ricardo Fernández",
+      id: 11,
+      nombre: "Johon Zuñiga",
       puesto: t("team.partner_strategic") || "Strategic Investment Partner",
-      bio: t("team.ricardo_bio") || "Strategic investor with expertise in emerging markets and blockchain ventures. Providing critical financial partnerships and market insights.",
+      bio: t("team.johon_bio") || "Strategic investor with expertise in emerging markets and blockchain ventures. Providing critical financial partnerships and market insights.",
       achievements: [
         t("team.ricardo_achievement1") || "Led investments in over 30 successful blockchain startups",
         t("team.ricardo_achievement2") || "Established a $100M fund dedicated to fintech innovation",
         t("team.ricardo_achievement3") || "Connected the company with key institutional investors globally"
       ],
-      imagen: null,
-      alt: "Ricardo Fernández",
+      imagen: johon,
+      alt: "Johon Zuñiga",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/ricardofernandez",
-        email: "ricardo@partnercompany.com"
-      },
-      partnerType: "commercial"
-    },
-    {
-      id: 11,
-      nombre: "Ana Martínez",
-      puesto: t("team.partner_tech") || "Technology Integration Partner",
-      bio: t("team.ana_bio") || "Technology integration specialist with a background in enterprise solutions. Leading our technology partnerships and integration strategies.",
-      achievements: [
-        t("team.ana_achievement1") || "Architected integration solutions for 5 major banking systems",
-        t("team.ana_achievement2") || "Reduced implementation time by 60% through innovative API design",
-        t("team.ana_achievement3") || "Developed proprietary connection protocols for secure financial transactions"
-      ],
-      imagen: null,
-      alt: "Ana Martínez",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/anamartinez",
-        twitter: "https://twitter.com/anamartinez",
-        email: "ana@techpartner.com"
+        linkedin: "https://linkedin.com/in/",
+        email: "ricardo@.com"
       },
       partnerType: "commercial"
     },
     {
       id: 12,
-      nombre: "Diego Lopez",
-      puesto: t("team.partner_distribution") || "Distribution & Growth Partner",
-      bio: t("team.diego_bio") || "Market expansion specialist with strong connections across Latin America and Europe. Leading our commercial growth and client acquisition initiatives.",
+      nombre: "Jorge López",
+      puesto: t("team.partner_tech") || "Partner",
+      bio: t("team.jorge_bio") || "Technology integration specialist with a background in enterprise solutions. Leading our technology partnerships and integration strategies.",
+      achievements: [
+        t("team.ana_achievement1") || "Architected integration solutions for 5 major banking systems",
+        t("team.ana_achievement2") || "Reduced implementation time by 60% through innovative API design",
+        t("team.ana_achievement3") || "Developed proprietary connection protocols for secure financial transactions"
+      ],
+      imagen: jorge,
+      alt: "Jorge López",
+      socialLinks: {
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
+        email: "ana@tec"
+      },
+      partnerType: "commercial"
+    },
+    {
+      id: 13,
+      nombre: "Lizzeth",
+      puesto: t("team.partner_distribution") || "Partner",
+      bio: t("team.lizzeth_bio") || "Market expansion specialist with strong connections across Latin America and Europe. Leading our commercial growth and client acquisition initiatives.",
       achievements: [
         t("team.diego_achievement1") || "Expanded operations to 7 new countries in under 18 months",
         t("team.diego_achievement2") || "Built a distribution network of over 100 financial advisors",
         t("team.diego_achievement3") || "Increased client base by 300% through strategic partnerships"
       ],
-      imagen: null,
+      imagen: lizzeth,
       alt: "Diego Lopez",
       socialLinks: {
-        linkedin: "https://linkedin.com/in/diegolopez",
-        twitter: "https://twitter.com/diegolopez",
-        email: "diego@growthpartner.com"
+        linkedin: "https://linkedin.com/in/",
+        twitter: "https://twitter.com/",
+        email: "@growthpartner.com"
       },
       partnerType: "commercial"
     }
