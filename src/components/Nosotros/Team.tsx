@@ -414,6 +414,37 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
           </motion.div>
         </div>
         
+        {/* Technical Specialists */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="inline-block mb-8 px-5 py-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full shadow-md"
+          >
+            <h3 className="text-white text-sm font-medium">
+            </h3>
+          </motion.div>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+          >
+            {teamMembers.slice(8, 10).map((member) => (
+              <TeamMemberCard 
+                key={member.id} 
+                {...member}
+                isSelected={expandedMember === member.id}
+                onClick={() => toggleMemberExpanded(member.id)}
+              />
+            ))}
+          </motion.div>
+        </div>
+
         {/* Commercial partners */}
         <div>
           <motion.div
