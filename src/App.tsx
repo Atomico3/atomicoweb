@@ -1,18 +1,11 @@
-// import { Button } from '@mui/material'
-
 import { RoutesOutlet } from "./routes/RoutesOutlet";
-
-// import { MainLayout } from "./views/MainLayout"
-
-// import { Home } from "./views/Home"
-
+import FloatingButton from "./components/FloatingButton";
 
 function App() {
-
   return (
     <>
-  <RoutesOutlet/>
-
+      <RoutesOutlet/>
+      <FloatingButton />
     </>
   )
 }
