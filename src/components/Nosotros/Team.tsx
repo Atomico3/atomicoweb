@@ -1,5 +1,5 @@
-import pablo from '../../assets/team/Pablo.jpg'
-import ezequiel from '../../assets/team/Ezequiel.jpg'
+import pabloImage from '../../assets/team/Pablo.jpg'
+import ezequielImage from '../../assets/team/Ezequiel.jpg'
 import luis from '../../assets/team/luis.jpg'
 import ricardo from '../../assets/team/ricardo.jpg'
 import carlos from '../../assets/team/carlos.jpg'
@@ -67,7 +67,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
         t("team.ezequiel_achievement2"),
         t("team.ezequiel_achievement3")
       ],
-      imagen: Ezequiel,
+      imagen: ezequielImage,
       alt: "Ezequiel Canclini",
       socialLinks: {
         linkedin: "https://linkedin.com/in/ezequielcanclini",
@@ -198,8 +198,8 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
         twitter: "https://twitter.com/",
         email: "sofia@atomicocompany.com"
       }
-    }
-     {
+    },
+    {
       id: 10,
       nombre: "Franco Rutigliano",
       puesto: t("team.lead_engineer") || "Lead ",
