@@ -1,4 +1,3 @@
-import pabloImage from '../../assets/team/Pablo.jpg'
 import ezequielImage from '../../assets/team/Ezequiel.jpg'
 import luis from '../../assets/team/luis.jpg'
 import ricardo from '../../assets/team/ricardo.jpg'

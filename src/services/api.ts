@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { fetchLithiumPrice } from '../api/lithium-price';
 
 export interface LithiumPriceResponse {
