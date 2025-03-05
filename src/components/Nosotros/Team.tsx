@@ -322,7 +322,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
           }}
         />
         
-        {/* Leadership team (first row) */}
+        {/* Leadership team (first row) - updated to match other rows */}
         <div className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -339,7 +339,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
           >
             {teamMembers.slice(0, 2).map((member) => (
               <TeamMemberCard 
