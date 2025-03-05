@@ -331,9 +331,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
             viewport={{ once: true }}
             className="inline-block mb-8 px-5 py-2 bg-gradient-to-r from-blue-600 to-blue-500 rounded-full shadow-md"
           >
-            <h3 className="text-white text-sm font-medium">
-              {t("team.leadership_title") || "Leadership Team"}
-            </h3>
+           
           </motion.div>
           
           <motion.div 
@@ -364,7 +362,6 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
             className="inline-block mb-8 px-5 py-2 bg-gradient-to-r from-blue-500 to-blue-400 rounded-full shadow-md"
           >
             <h3 className="text-white text-sm font-medium">
-              {t("team.executive_title") || "Executive Team"}
             </h3>
           </motion.div>
           
@@ -396,7 +393,6 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
             className="inline-block mb-8 px-5 py-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full shadow-md"
           >
             <h3 className="text-white text-sm font-medium">
-              {t("team.department_title") || "Department Heads"}
             </h3>
           </motion.div>
           
