@@ -44,19 +44,19 @@ const FloatingButton = () => {
     return [
       { 
         text: <span dangerouslySetInnerHTML={{ 
-          __html: `ATOMICO 3 CARDANO<br>AT3 price = ${price} USD` 
+          __html: `LITHIUM INDEX AT3<br>Price = ${price} USD` 
         }} />, 
         language: "English" 
       },
       { 
         text: <span dangerouslySetInnerHTML={{ 
-          __html: `ATOMICO 3 CARDANO<br>AT3 precio = ${price} USD` 
+          __html: `INDICE DE LITIO AT3<br>Precio = ${price} USD` 
         }} />, 
         language: "Spanish" 
       },
       { 
         text: <span dangerouslySetInnerHTML={{ 
-          __html: `ATOMICO 3 CARDANO<br>AT3 preço = ${price} USD` 
+          __html: `INDICE DE LITIO AT3<br>Preço = ${price} USD` 
         }} />, 
         language: "Portuguese" 
       }
