@@ -24,7 +24,7 @@ import cripto247 from '../../assets/news/cripto247.webp'
 import databar from '../../assets/news/databar.jpg'
 import databar2 from '../../assets/news/databar2.jpg'
 import agendaenergica from '../../assets/news/agenda.jpeg'
-import mogna from '../../assets/news/pabloterritorio.jpeg'
+import mogna from '../../assets/news/pabloterritorio.jpg'
 
 
 export const Noticias = () => {
