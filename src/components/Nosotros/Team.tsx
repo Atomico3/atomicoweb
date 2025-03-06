@@ -77,7 +77,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     {
       id: 3,
       nombre: "Luis Gomez",
-      puesto: t("team.cto") || "Gerencia de Tecnología",
+      puesto: "Gerencia de Tecnología",
       bio: t(".") || "..",
       achievements: [
       ],
