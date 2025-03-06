@@ -24,11 +24,14 @@ import cripto247 from '../../assets/news/cripto247.webp'
 import databar from '../../assets/news/databar.jpg'
 import databar2 from '../../assets/news/databar2.jpg'
 import agendaenergica from '../../assets/news/agenda.jpeg'
+import mogna from '../../assets/news/pabloterritorio.jpeg'
+
 
 export const Noticias = () => {
   const [t] = useTranslation("global")
 
   const noticias = [
+	  {imagen: pabloterritorio, title:  t("ARGENTINA CIERRA LA PRIMERA TOKENIZACION DE LITIO A NIVEL MUNDIAL"), subtitle: "Territorio Blockchain",link: "https://territorioblockchain.com/argentina-cierra-la-primera-tokenizacion-de-litio-a-nivel-mundial/" },
     {imagen: at3, title:  t("noticias.n1"), subtitle: "Nación Web",link: "https://nacionweb.com.ar/aumento-del-precio-del-litio-impulsa-a-la-criptomoneda-argentina-atomico-3-como-opcion-de-inversion-solida/" },
     {imagen: litioProyeccion, title:  t("noticias.n2"), subtitle: "Agencia Política" ,link: "https://agenciapolitica.com.ar/la-valorizacion-del-litio-en-latinoamerica-perspectivas-proyecciones-y-su-impacto-en-el-mercado-global/" },
     {imagen: at3img, title:  t("noticias.n3"), subtitle: "Agencia Política" ,link: "https://noticiasargentinas.com/economia/atomico-3--la-criptomoneda-argentina-ligada-al-litio-reduce-su-emision-para-que-sea-sostenible-en-el-tiempo_a669c39acd066f26ecefe0568?fbclid=IwZXh0bgNhZW0CMTAAAR2t5kt4DbjXVmaGOKH-lOZuFmAcLYq2iKPRhkVG9j5xc9LjCc5X0gpPaIg_aem_b1TPAFvZgRThufzAXn8i3Q" },
