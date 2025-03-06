@@ -60,13 +60,15 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     "Established strategic partnerships with leading financial institutions";
   
   // New team member positions
-  translations.team.cto = translations.team.cto || "Chief Technology Officer";
-  translations.team.cfo = translations.team.cfo || "Chief Financial Officer";
-  translations.team.coo = translations.team.coo || "Chief Operating Officer";
-  translations.team.legal_head = translations.team.legal_head || "Head of Legal & Compliance";
-  translations.team.biz_dev_head = translations.team.biz_dev_head || "Head of Business Development";
-  translations.team.lead_engineer = translations.team.lead_engineer || "Lead Blockchain Engineer";
-  translations.team.marketing_head = translations.team.marketing_head || "Head of Marketing & Communications";
+  translations.team.cto = translations.team.cto || "Gerencia de Tecnología";
+  translations.team.cfo = translations.team.cfo || "CFO";
+  translations.team.coo = translations.team.coo || "Gerencia de RRHH & Estrategia";
+  translations.team.legal_head = translations.team.legal_head || "Gerencia de Comunicaciones";
+  translations.team.biz_dev_head = translations.team.biz_dev_head || "Dirección de Relaciones Institucionales";
+  translations.team.lead_dev = translations.team.lead_dev || "Tecnología & Desarrollo";
+  translations.team.marketing_head = translations.team.marketing_head || "Gerencia de Prensa";
+  translations.team.Economy_head = translations.team.Economy_head || "Dirección de Minería & Economía";
+
   
   // New team member bios
   translations.team.maria_bio = translations.team.maria_bio || 

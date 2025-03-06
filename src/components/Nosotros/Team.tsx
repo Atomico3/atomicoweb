@@ -77,7 +77,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     {
       id: 3,
       nombre: "Luis Gomez",
-      puesto: "Gerencia de Tecnología",
+      puesto: t("team.cto") || "Gerencia de Tecnología",
       bio: t(".") || "..",
       achievements: [
       ],
@@ -149,7 +149,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     {
       id: 8,
       nombre: "Juan Allan",
-      puesto: t("team.lead_engineer") || "Gerencia de Prensa",
+      puesto: t("team.marketing_head") || "Gerencia de Prensa",
       bio: t(".") || "..",
       achievements: [
       ],
@@ -164,7 +164,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     {
       id: 9,
       nombre: "Carlos Attias",
-      puesto: t("team.marketing_head") || "Dirección de Minería & Economía",
+      puesto: t("team.Economy_head") || "Dirección de Minería & Economía",
       bio: t(".") || "..",
       achievements: [
       ],
@@ -179,7 +179,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
     {
       id: 10,
       nombre: "Franco Rutigliano",
-      puesto: t("team.lead_engineer") || "Tecnología & Desarrollo",
+      puesto: t("team.lead_dev") || "Tecnología & Desarrollo",
       bio: t(".") || "..",
       achievements: [
       ],
