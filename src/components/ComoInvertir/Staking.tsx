@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 export const Staking = () => {
-    const { t, i18n } = useTranslation("global");
+   const { t } = useTranslation("global");
     const location = useLocation();
     const stakingRef = useRef<HTMLDivElement>(null);
 
