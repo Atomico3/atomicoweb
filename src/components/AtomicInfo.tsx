@@ -69,7 +69,7 @@ const WelcomePopup: React.FC = () => {
                     </p>
 
                     <a
-                        href="atomico3.io/migracion#/comoInvertir"
+                        href="https://www.atomico3.io/#/comoInvertir"
                         className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
                             text-white rounded-xl hover:from-blue-500 hover:to-blue-700 transform hover:-translate-y-1 
                             transition-all duration-300 shadow-lg hover:shadow-xl"
