@@ -79,24 +79,7 @@ const WelcomePopup: React.FC = () => {
                 </div>
 
               
-                            <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent mx-auto mb-12" />
-
-                <div className="space-y-6">
-                    <p className="text-xl text-gray-700 font-medium mb-8">
-                        SI YA TENES ATOMICOS PODES INGRESAR AL SIGUIENTE ENLACE PARA HACER STAKING Y GENERAR RECOMPENSAS MIENTRAS ESPERAS LA MIGRACION A CARDANO
-                    </p>
-
-                    <a
-                        href="https://atomico3dapp.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
-                            text-white rounded-xl hover:from-blue-500 hover:to-blue-700 transform hover:-translate-y-1 
-                            transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                        STAKING
-                    </a>
-                </div>
+                                
             </div>
         </div>
     );
