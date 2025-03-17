@@ -78,8 +78,7 @@ const WelcomePopup: React.FC = () => {
                     </a>
                 </div>
 
-                <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent mx-auto mb-12" />
-
+              
                             <div className="w-1/2 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent mx-auto mb-12" />
 
                 <div className="space-y-6">
