@@ -57,8 +57,8 @@ export const Comprar = () => {
 
                     <div className='flex justify-center items-center px-5 md:px-0'>
                         <iframe
-                            src="https://atomico3swap.vercel.app/"
-                            title="Atomico3 Swap"
+                            src="https://at3selling.vercel.app/"
+                            title="Compra Atomico3"
                             style={{
                                 width: '100%',
                                 height: '500px', // Ajusta la altura según sea necesario
