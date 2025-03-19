@@ -35,10 +35,10 @@ export const Invertir = () => {
                 </span>
               <b className='lg:text-lg'>
 
-              1. {t("invertir.modalidad 1")}
+             
               <br />
-              2. {t("invertir.modalidad 2")} <br />
-              3. {t("invertir.modalidad 3")}
+              1. {t("invertir.modalidad 2")} <br />
+              2. {t("invertir.modalidad 3")}
               </b>
 
               

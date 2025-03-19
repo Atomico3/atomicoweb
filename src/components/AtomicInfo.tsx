@@ -77,6 +77,22 @@ const WelcomePopup: React.FC = () => {
                         MIGRACION A CARDANO
                     </a>
                 </div>
+				
+				       <div className="space-y-6 mb-12">
+                    <p className="text-xl text-gray-700 font-medium mb-8">
+                        ULTIMA OPORTUNIDAD DE ADQUIRIR ATOMICO 3 
+                    </p>
+
+                    <a
+                        href="https://at3selling.vercel.app/"
+                        className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
+                            text-white rounded-xl hover:from-blue-500 hover:to-blue-700 transform hover:-translate-y-1 
+                            transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                        COMPRA ATOMICO 3
+                    </a>
+                </div>
+
 
               
                                 
@@ -131,8 +147,8 @@ export const AtomicInfo: React.FC = () => {
                                 overflow: 'hidden' 
                             }}>
                                 <iframe
-                                    src="https://at3staking.vercel.app/"
-                                    title="Atomico3 Compra-Staking"
+                                    src="https://at3selling.vercel.app/"
+                                    title="Atomico3 Compra"
                                     style={{
                                         position: 'absolute',
                                         top: '0',
