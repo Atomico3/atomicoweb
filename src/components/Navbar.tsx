@@ -357,7 +357,7 @@ export const Navbar = () => {
                           {t("navbar.feliz primavera")}
                         </a> */}
                             <a
-                              href="https://atomico3swap.vercel.app/"
+                              href="https://at3selling.vercel.app/"
                               target='_blank'
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
@@ -749,20 +749,7 @@ export const Navbar = () => {
                             <img src={login} alt="login" className="w-8 sm:w-10 md:w-12 lg:w-8 " />
 
                           </a> */}
-                        <div className='flex flex-col justify-between    h-full'>
-
-                          <a
-                            href='https://app.atomico3.io/auth'
-                            target='_blank'
-                            className=' hover:cursor-pointer bg-white text- hidden md:block   border-2 border-[#6D6D6D] text-[#6D6D6D]   rounded-md p-2 w-full mb-1  text-center text-xs  hover:font-bold'>{t("navbar.iniciar sesion")}</a>
-                          <a
-                            href='https://app.atomico3.io/auth'
-                            target='_blank'
-                            className=' hover:cursor-pointer bg-white text- hidden md:block   border-2 border-[#6D6D6D] text-[#6D6D6D]   rounded-md p-2 w-full   text-center text-xs  hover:font-bold'>
-                            {t("navbar.registrarse")}
-                          </a>
-                        </div>
-
+                    
 
                         {/* <span className="sr-only">Menu</span>
                           <svg
@@ -793,14 +780,14 @@ export const Navbar = () => {
                               className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
                             >
-                              {t("navbar.iniciar sesion")}
+                              {t("navbar..")}
                             </Link>
                             <Link
                               target='_blank'
                               className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500  "
                               to={"https://app.atomico3.io/auth"}
                             >
-                              {t("navbar.registrarse")}
+                              {t("navbar..")}
 
                             </Link>
 
@@ -864,7 +851,7 @@ export const Navbar = () => {
                           className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                           role="menuitem"
                         >
-                          {t("navbar.iniciar sesion")}
+                          {t("navbar..")}
                         </Link>
                         <Link
                           to={"https://app.atomico3.io/auth"}
@@ -872,7 +859,7 @@ export const Navbar = () => {
                           className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500  "
 
                         >
-                          {t("navbar.registrarse")}
+                          {t("navbar..")}
 
                         </Link>
 
