@@ -86,10 +86,8 @@ const Register = () => {
     }
 
     try {
-      // Use the new server URL
-      const API_URL = process.env.NODE_ENV === 'development' 
-        ? 'http://66.97.47.32:3003' 
-        : 'http://66.97.47.32:3003';
+      // Use consistent server URL
+      const API_URL = 'http://66.97.47.32:3003';
       
       console.log('Submitting registration data to:', `${API_URL}/api/register`);
       
@@ -118,13 +116,14 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(registrationData)
+        body: JSON.stringify(registrationData),
+        credentials: 'include' // Include cookies if the server uses them
       });
 
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.message || 'Registration failed');
+        throw new Error(data.message || t('register.errorGeneric'));
       }
       
       console.log('Registration successful:', data);
@@ -140,12 +139,13 @@ const Register = () => {
           body: JSON.stringify({
             username: formData.username,
             password: formData.password
-          })
+          }),
+          credentials: 'include'
         });
         
         const loginData = await loginResponse.json();
         
-        if (loginResponse.ok) {
+        if (loginResponse.ok && loginData.user && loginData.token) {
           login(loginData.user, loginData.token);
           
           // Redirect to home page after short delay
@@ -153,6 +153,7 @@ const Register = () => {
             navigate('/');
           }, 2000);
         } else {
+          console.warn('Auto-login response not OK:', loginData);
           setTimeout(() => {
             navigate('/login');
           }, 2000);

@@ -31,18 +31,26 @@ const Login = () => {
     setError('');
     setSuccess('');
 
+    // Validate input
+    if (!credentials.username || !credentials.password) {
+      setError(t('login.missingFields'));
+      setLoading(false);
+      return;
+    }
+
     try {
-      // Use local API server during development
-      const API_URL = process.env.NODE_ENV === 'development' 
-        ? 'http://66.97.47.32:3003' 
-        : 'http://66.97.47.32:3003';
+      // Use the server URL
+      const API_URL = 'http://66.97.47.32:3003';
+      
+      console.log('Attempting login with server:', API_URL);
       
       const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(credentials)
+        body: JSON.stringify(credentials),
+        credentials: 'include' // Include cookies if the server uses them
       });
 
       const data = await response.json();
@@ -54,9 +62,8 @@ const Login = () => {
       console.log('Login successful:', data);
       setSuccess(t('login.success'));
       
-      // IMPORTANT FIX: Make sure we're passing the correct data to login
       if (data && data.user && data.token) {
-        // Call login with proper parameters
+        // Call login with correct parameters
         login(data.user, data.token);
         
         // Debug to verify what we sent to AuthContext
@@ -65,12 +72,11 @@ const Login = () => {
           tokenSent: data.token 
         });
         
-        // Add a short delay before redirecting to allow state updates
         setTimeout(() => {
           navigate('/');
         }, 1000);
       } else {
-        throw new Error("Invalid response from server");
+        throw new Error("Server response missing required user data or token");
       }
       
     } catch (err) {

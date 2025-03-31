@@ -10,7 +10,7 @@ const app = express();
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'http://localhost:5173', // Your Vite dev server
+  origin: '*', // Allow any origin
   credentials: true
 }));
 
@@ -238,7 +238,7 @@ app.use('/api', createProxyMiddleware({
   },
   onProxyRes: (proxyRes, req, res) => {
     // Add CORS headers to the proxied response
-    proxyRes.headers['Access-Control-Allow-Origin'] = 'http://localhost:5173';
+    proxyRes.headers['Access-Control-Allow-Origin'] = '*'; // Allow any origin
     proxyRes.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
     proxyRes.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
     proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
@@ -247,12 +247,13 @@ app.use('/api', createProxyMiddleware({
 
 // Start the server
 const PORT = process.env.PORT || 3003;
+const SERVER_URL = 'http://66.97.47.32:3003';
 app.listen(PORT, () => {
   console.log(`
 ╔════════════════════════════════════════════╗
 ║                                            ║
 ║   🚀 Atomico API server running on:        ║
-║      http://66.97.47.32:${PORT}             ║
+║      ${SERVER_URL}                         ║
 ║                                            ║
 ║   📅 Server started at:                    ║
 ║      ${new Date().toLocaleString()}        ║
