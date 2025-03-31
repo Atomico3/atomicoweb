@@ -33,7 +33,8 @@
     "politica cookies": "Política de Cookies",
     "faq for law": "Perguntas Frequentes para as Forças da Lei",
     "iniciar sesion": "Iniciar Sessão",
-    "registrarse": "Registrar-se"
+    "registrarse": "Registrar-se",
+    "logout": "Sair"
   },
   "nosotros": {
     "title": "Somos uma empresa legalmente constituída no Paraguai, dedicada ao desenvolvimento e otimização da atividade mineradora. Oferecemos a ferramenta de tokenização de reservas de lítio certificadas, buscando com isso inovar e revolucionar a indústria da eletromobilidade.",
@@ -324,7 +325,7 @@
           "content": "Com relação a qualquer pessoa determinada, entende-se como qualquer outra pessoa que controle essa pessoa determinada, ou que seja controlada por essa pessoa determinada, seja de forma direta ou indireta, ou que, junto com essa outra pessoa, esteja sob controle comum de uma terceira pessoa. Para os fins desta definição, a palavra 'controle', quando usada com relação a uma pessoa determinada, significa o poder de dirigir direta ou indiretamente a administração e as políticas dessa pessoa através da titularidade de ações com direito a voto ou por meio do direito de escolher a maioria dos membros do conselho dessa pessoa, e os termos 'que controle' e 'controlada' têm significados correlatos ao precedente."
         },
         "p4": {
-          "title": "Base de dados",
+          "title": "Base de datos",
           "content": "É o conjunto organizado de Informações Pessoais que são objeto de tratamento ou processamento, eletrônico ou não, independentemente da modalidade de sua formação, armazenamento, organização ou acesso."
         },
         "p5": {
@@ -796,6 +797,62 @@
       "n2": "Aumento do preço do lítio impulsiona a criptomoeda Atómico3 como opção de investimento sólido",
       "n3": "A concretização de projetos que estavam demorando começaria a se reativar após o aumento regional no preço do lítio"
       
+  },
+  "register": {
+    "title": "Criar uma Conta",
+    "createAccount": "Criar Sua Conta",
+    "contactDetails": "Informações de Contato",
+    "finalDetails": "Informações Adicionais",
+    "accountDetails": "Conta",
+    "contactInfo": "Contato",
+    "additionalInfo": "Adicional",
+    "username": "Nome de Usuário",
+    "email": "Endereço de Email",
+    "password": "Senha",
+    "passwordHint": "A senha deve ter pelo menos 8 caracteres com letras e números",
+    "confirmPassword": "Confirmar Senha",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "phoneNumber": "Número de Telefone",
+    "country": "País",
+    "selectCountry": "Selecione seu país",
+    "address": "Endereço",
+    "addressNumber": "Número do Endereço",
+    "postalCode": "Código Postal",
+    "taxID": "ID Fiscal",
+    "identityDocument": "Documento de Identidade",
+    "walletAddress": "Endereço da Carteira",
+    "isUIFF": "Sou UIFF (Titular Individual Final de Conta Financeira)",
+    "isExposed": "Sou uma pessoa politicamente exposta",
+    "termsTitle": "Termos e Privacidade",
+    "termsDescription": "Ao criar uma conta, você concorda com nossos termos e condições e política de privacidade.",
+    "agreeTerms": "Concordo com os",
+    "termsLink": "Termos e Condições",
+    "next": "Continuar",
+    "previous": "Voltar",
+    "submit": "Criar Conta",
+    "processing": "Criando conta...",
+    "errorAllFields": "Por favor preencha todos os campos obrigatórios",
+    "errorPasswordMatch": "As senhas não coincidem",
+    "errorPersonalInfo": "Por favor preencha todas as informações pessoais obrigatórias",
+    "errorContactInfo": "Por favor preencha todas as informações de contato obrigatórias",
+    "errorGeneric": "Falha no registro. Por favor tente novamente.",
+    "success": "Registro bem-sucedido! Redirecionando...",
+    "alreadyHaveAccount": "Já tem uma conta?",
+    "signIn": "Entrar"
+  },
+  "login": {
+    "title": "Entrar na Sua Conta",
+    "username": "Nome de Usuário",
+    "email": "Endereço de Email",
+    "password": "Senha",
+    "forgotPassword": "Esqueceu sua senha?",
+    "loginButton": "Entrar",
+    "processing": "Entrando...",
+    "noAccount": "Não tem uma conta?",
+    "createAccount": "Criar conta",
+    "errorCredentials": "Nome de usuário ou senha inválidos",
+    "errorGeneric": "Falha no login. Por favor, tente novamente.",
+    "success": "Login bem-sucedido! Redirecionando..."
   }
- 
 }

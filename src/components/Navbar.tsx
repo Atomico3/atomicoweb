@@ -1,17 +1,52 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import atomicLogo from '../assets/atomicLogo.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import eng from '../assets/lang/eng.png'
-import esp from '../assets/lang/esp.png'
-import bra from '../assets/lang/brazil.png'
-
-import login from '../assets/login.png'
+import eng from '../assets/lang/eng.png';
+import esp from '../assets/lang/esp.png';
+import bra from '../assets/lang/brazil.png';
+import login from '../assets/login.png';
 import { Form } from './Form';
 
 export const Navbar = () => {
   const [t, i18n] = useTranslation("global");
-
+  const navigate = useNavigate();
+  
+  // Read auth state directly from localStorage
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('isAuthenticated') === 'true');
+  const [user, setUser] = useState(() => {
+    try {
+      const userData = localStorage.getItem('user');
+      return userData ? JSON.parse(userData) : null;
+    } catch (error) {
+      console.error('Error parsing user data from localStorage:', error);
+      return null;
+    }
+  });
+  
+  // Listen for storage events (login/logout)
+  useEffect(() => {
+    const handleStorageEvent = () => {
+      setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+      try {
+        const userData = localStorage.getItem('user');
+        setUser(userData ? JSON.parse(userData) : null);
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        setUser(null);
+      }
+    };
+    
+    // Listen to custom events
+    window.addEventListener('storage-login', handleStorageEvent);
+    window.addEventListener('storage-logout', handleStorageEvent);
+    
+    return () => {
+      window.removeEventListener('storage-login', handleStorageEvent);
+      window.removeEventListener('storage-logout', handleStorageEvent);
+    };
+  }, []);
+  
   // Estados para cada dropdown
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
@@ -22,13 +57,32 @@ export const Navbar = () => {
   const [isOpenDropdownProyectos, setIsOpenDropdownProyectos] = useState(false);
   const [isOpenDropdownNoticias, setIsOpenDropdownNoticias] = useState(false);
   const [isOpenDropdownLogin, setIsOpenDropdownLogin] = useState(false);
-  const [showForm, setShowForm] = useState(false)
-  const [selectedDocument, setSelectedDocument] = useState('')
+  const [isOpenDropdownUser, setIsOpenDropdownUser] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [selectedDocument, setSelectedDocument] = useState('');
+
+  // Function to handle logout
+  const handleLogout = () => {
+    console.log("Logout clicked");
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('loginTime');
+    
+    setUser(null);
+    setIsAuthenticated(false);
+    
+    // Trigger event so other components can react
+    window.dispatchEvent(new Event('storage-logout'));
+    
+    setIsOpenDropdownUser(false);
+    navigate('/');
+  };
 
   // Función para abrir/cerrar el menú principal
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setIsOpenDropdownLogin(false)
+    setIsOpenDropdownLogin(false);
   };
 
   const closeMenu = () => {
@@ -48,6 +102,7 @@ export const Navbar = () => {
     setIsOpenDropdownLegal(false);
     setIsOpenDropdownProyectos(false);
     setIsOpenDropdownLang(false);
+    setIsOpenDropdownUser(false);
   };
 
   // Funciones para abrir/cerrar dropdowns, cerrando todos los demás
@@ -92,39 +147,156 @@ export const Navbar = () => {
     closeAllDropdowns();
     setIsOpenDropdownLogin(!isCurrentlyOpen);
     setIsOpen(false);
-
   };
-  // const toggleDropdownLang = () => {
-  //   const isCurrentlyOpen = isOpenDropdownLang;
-  //   closeAllDropdowns();
-  //   setIsOpenDropdownLang(!isCurrentlyOpen);
-  // };
 
+  const toggleDropdownUser = () => {
+    const isCurrentlyOpen = isOpenDropdownUser;
+    closeAllDropdowns();
+    setIsOpenDropdownUser(!isCurrentlyOpen);
+  };
 
   const handleForm = () => {
-    setShowForm(prev => !prev)
-  }
+    setShowForm(prev => !prev);
+  };
+
+  const getAuthButtons = () => {
+    if (isAuthenticated && user) {
+      return (
+        <div className="relative" onMouseLeave={() => setIsOpenDropdownUser(false)}>
+          <button
+            className="flex items-center text-white hover:text-blue-500 space-x-1"
+            onMouseEnter={() => setIsOpenDropdownUser(true)}
+            onClick={() => setIsOpenDropdownUser(!isOpenDropdownUser)}
+          >
+            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+              <span className="text-white font-medium">
+                {user.username ? user.username.charAt(0).toUpperCase() : 'U'}
+              </span>
+            </div>
+            <span className="hidden sm:inline">{user.username}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+
+          {isOpenDropdownUser && (
+            <div
+              className="absolute right-0 z-10 mt-2 w-48 bg-dark-light text-white shadow-lg rounded-md"
+              role="menu"
+            >
+              <div className="p-2 border border-gray-700 rounded-md">
+                {user.email && (
+                  <div className="px-4 py-2 text-sm text-gray-300 border-b border-gray-700">
+                    {user.email}
+                  </div>
+                )}
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-700 rounded-md"
+                  role="menuitem"
+                >
+                  {t('navbar.logout')}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <Link 
+            to="/login" 
+            className="text-white hover:text-blue-500"
+          >
+            {t("navbar.iniciar sesion")}
+          </Link>
+          <Link 
+            to="/register" 
+            className="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 transition duration-300"
+          >
+            {t("navbar.registrarse")}
+          </Link>
+        </>
+      );
+    }
+  };
+
+  const getMobileAuthButtons = () => {
+    if (isAuthenticated && user) {
+      return (
+        <>
+          <div className="flex items-center space-x-2 py-2">
+            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+              <span className="text-white font-medium">
+                {user.username ? user.username.charAt(0).toUpperCase() : 'U'}
+              </span>
+            </div>
+            <span className="text-white">{user.username}</span>
+          </div>
+          {user.email && (
+            <div className="text-sm text-gray-300 py-2">
+              {user.email}
+            </div>
+          )}
+          <button
+            onClick={handleLogout}
+            className="block w-full py-2 text-center bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-300"
+          >
+            {t('navbar.logout')}
+          </button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Link 
+            to="/login" 
+            className="block py-2 text-white hover:text-blue-500"
+            onClick={() => setIsOpen(false)}
+          >
+            {t("navbar.iniciar sesion")}
+          </Link>
+          <Link 
+            to="/register" 
+            className="block py-2 text-center bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
+            onClick={() => setIsOpen(false)}
+          >
+            {t("navbar.registrarse")}
+          </Link>
+        </>
+      );
+    }
+  };
 
   return (
     <>
       {showForm && <Form handleForm={handleForm} documentType={selectedDocument} />}
 
-      <nav className="fixed sticky absolute top-0 left-0 w-full bg-dark-light text-white z-50 lg:py-3  ">
-        <div className="mx-auto max-w-screen-xl px-1 sm:px-1 lg:px-1 ">
+      <nav className="fixed sticky absolute top-0 left-0 w-full bg-dark-light text-white z-50 lg:py-3">
+        <div className="mx-auto max-w-screen-xl px-1 sm:px-1 lg:px-1">
           <div className="flex h-16 items-center justify-between">
             <div className="flex-1 md:flex md:items-center md:gap-12">
               <Link className="block text-teal-600 dark:text-teal-300 hover:cursor-pointer" to={'/'}>
-                <span className="sr-only ">Inicio</span>
+                <span className="sr-only">Inicio</span>
                 <img src={atomicLogo} alt="logo" className="w-28 lg:w-60" />
               </Link>
             </div>
 
-            <div className="md:flex md:items-center ">
+            <div className="md:flex md:items-center">
               {/* Menú en pantallas grandes */}
               <nav aria-label="Global" className="hidden md:block">
-                <ul className="flex items-center gap-6  lg:text-md">
-
-                  <li >
+                <ul className="flex items-center gap-6 lg:text-md">
+                  <li>
                     {/* DROPDONW PROYECTO */}
                     <div className="relative"
                       onMouseLeave={() => setIsOpenDropdownProyectos(false)}>
@@ -152,7 +324,7 @@ export const Navbar = () => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -216,7 +388,7 @@ export const Navbar = () => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -253,19 +425,10 @@ export const Navbar = () => {
                             >
                               {t("navbar.trabaja")}
                             </a>
-                            {/* <a
-                              href='https://drive.google.com/uc?export=download&id=1GDVfVh34bo7ZvaVWjvwvmqYshgMF3zWf' download
-                              className="hover:cursor-pointer block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                              role="menuitem"
-                              onClick={() => { toggleDropdownAboutUs() }}
-                            >
-                              {t("navbar.descargar brochure")}
-
-                            </a> */}
                             <button
                               className="hover:cursor-pointer block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
-                              onClick={() => { toggleDropdownAboutUs();  setSelectedDocument('brochure'); handleForm(); }}
+                              onClick={() => { toggleDropdownAboutUs(); setSelectedDocument('brochure'); handleForm(); }}
                             >
                               {t("navbar.descargar brochure")}
 
@@ -316,7 +479,7 @@ export const Navbar = () => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -332,7 +495,6 @@ export const Navbar = () => {
                           <div className="p-2">
                             <Link
                               to={'/comoInvertir'}
-                              // href='https://atomico3swap.vercel.app/'
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
                             >
@@ -340,22 +502,11 @@ export const Navbar = () => {
                             </Link>
                             <Link
                               to={'/comoInvertir#staking'}
-                              // href='https://dapp-at-3.vercel.app'
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
                             >
                               Staking
                             </Link>
-
-
-                            {/* <a
-                          href="https://dapp-at-3.vercel.app/stakingplus"
-                          target='_blank'
-                          className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                          role="menuitem"
-                        >
-                          {t("navbar.feliz primavera")}
-                        </a> */}
                             <a
                               href="https://at3selling.vercel.app/"
                               target='_blank'
@@ -372,14 +523,6 @@ export const Navbar = () => {
                             >
                               Peer to Peer
                             </Link>
-                            {/* Link para promo */}
-                            {/* <Link
-                              to={'/comoInvertir#halloween'}
-                              className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                              role="menuitem"
-                            >
-                              Halloween Week!
-                            </Link> */}
                             <Link
                               to={'/comoInvertir#tutoriales'}
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
@@ -396,12 +539,6 @@ export const Navbar = () => {
 
                   </li>
                   <li>
-                    {/* <Link
-                    className="text-white transition hover:text-celeste  "
-                    to={'/legal'}
-                  >
-                    {t("navbar.legal")}
-                  </Link> */}
                     {/* DROPDWON LEGAL*/}
                     <div className="relative"
                       onMouseLeave={() => setIsOpenDropdownLegal(false)}>
@@ -428,7 +565,7 @@ export const Navbar = () => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -444,7 +581,6 @@ export const Navbar = () => {
                           <div className="p-2">
                             <Link
                               to={'/legal/terms'}
-                              // href='https://dapp-at-3.vercel.app'
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
                             >
@@ -480,11 +616,6 @@ export const Navbar = () => {
                     </div>
                     {/* FIN DROPDWON LEGAL*/}
                   </li>
-                  {/* DROPDOWN MEDIOS Y NOTICIAS */}
-
-
-
-
 
                   <li>
 
@@ -500,17 +631,9 @@ export const Navbar = () => {
                           onMouseEnter={() => setIsOpenDropdownNoticias(true)}
 
                         >
-                          {/* <a
-                            className=" mr-1  py-2 text-sm/none text-white hover:text-blue-500 "
-                          >
-                            {t("navbar.legal")}
-                          </a> */}
-
-
                           <a
                             className="text-white text-center leading-[20px] transition hover:text-celeste   "
                           >
-                            {/* {t("navbar.noticias")} */}
                             {i18n.language === "es" ? (
                               <div className='text-sm'>
                                 <span className='block'>Medios y</span>
@@ -535,7 +658,7 @@ export const Navbar = () => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -551,7 +674,6 @@ export const Navbar = () => {
                           <div className="p-2">
                             <Link
                               to={'/medios'}
-                              // href='https://dapp-at-3.vercel.app'
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
                             >
@@ -573,28 +695,7 @@ export const Navbar = () => {
                     </div>
                     {/* FIN DROPDWON MEDIOS Y NOTICIAS*/}
                   </li>
-                  {/* <li>
-                    <Link
-                      className="text-white text-center leading-[20px] transition hover:text-celeste   "
-                      to={"/press"}
-                    >
-                      {/* {t("navbar.noticias")} */}
-                  {/* {i18n.language === "es" ? (
-                        <div className='text-sm'>
-                          <span className='block'>Medios y</span>
-                          <span className='block'>Noticias</span>
-                        </div>
-                      ) : (
 
-                        <div className='text-sm'>
-                          <span className='block'>Press </span>
-                          <span className='block'>& Media</span>
-                        </div>
-                      )}
-                    </Link>
-                  </li> */}
-
-                  {/* DROPDWON AYUDA*/}
                   <div className="relative"
                     onMouseLeave={() => setIsOpenDropdownHelp(false)}>
                     <div
@@ -620,7 +721,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -635,7 +736,6 @@ export const Navbar = () => {
                       >
                         <div className="p-2">
                           <a
-                            // href='#contact'
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                             role="menuitem"
                             onClick={(e) => {
@@ -667,7 +767,6 @@ export const Navbar = () => {
                       </div>
                     }
                   </div>
-                  {/* FIN DROPDWON AYUDA*/}
 
                   <li>
 
@@ -698,7 +797,7 @@ export const Navbar = () => {
                           >
                             <path
                               fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                               clipRule="evenodd"
                             />
                           </svg>
@@ -730,148 +829,123 @@ export const Navbar = () => {
                     {/* FIN DROPDWON LANGUAGES*/}
 
                   </li>
-                  <li>
-                    {/* DROPDOWN INICIAR SESIÓN*/}
-                    <div className="relative"
-                      onMouseLeave={() => setIsOpenDropdownLogin(false)}>
-                      <div
-                        className="inline-flex items-center overflow-hidden rounded-md  h-full text-white"
-                      >
-
-                        {/* <button
-                          className="h-full flex items-center p-2 text-white   hover:text-blue-500 "
-                          onMouseEnter={() => setIsOpenDropdownLogin(true)}
-
-                        > */}
-                        {/* <a
-                            className=" mr-1  py-2 text-sm/none text-white hover:text-blue-500 "
-                          >
-                            <img src={login} alt="login" className="w-8 sm:w-10 md:w-12 lg:w-8 " />
-
-                          </a> */}
-                    
-
-                        {/* <span className="sr-only">Menu</span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="size-4 "
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                              clipRule="evenodd"
-                            />
-                          </svg> */}
-                        {/* </button> */}
-                      </div>
-
-                      {
-                        isOpenDropdownLogin &&
-                        <div
-                          className="absolute end-0 z-10 mt-0 w-56  bg-dark-light text-white shadow-lg  "
-                          role="menu"
-                        >
-                          <div className="p-2 ">
-                            <Link
-                              to={"https://app.atomico3.io/auth"}
-                              target='_blank'
-                              className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                              role="menuitem"
-                            >
-                              {t("navbar..")}
-                            </Link>
-                            <Link
-                              target='_blank'
-                              className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500  "
-                              to={"https://app.atomico3.io/auth"}
-                            >
-                              {t("navbar..")}
-
-                            </Link>
-
-                          </div>
-                        </div>
-                      }
-                    </div>
-                    {/* FIN DROPDWON LANGUAGES*/}
-
+                  <li className="flex items-center space-x-3">
+                    {getAuthButtons()}
                   </li>
-
                 </ul>
               </nav>
 
               {/* Menú hamburguesa */}
               <div className="flex items-center gap-4">
-                {/* DROPDOwN INICIAR SESIÓN*/}
-                <div className="relative md:hidden"
-                  onClick={() => toggleDropdownLogin()}>
-                  <div
-                    className="inline-flex items-center overflow-hidden rounded-md  text-white"
-                  >
-
-                    <button
-                      className="h-full flex items-center p-2 text-white   hover:text-blue-500 "
-                      onClick={() => toggleDropdownLogin()}
-
-                    >
-                      <a
-                        className=" mr-1  py-2 text-sm/none text-white hover:text-blue-500 "
-                      >
-                        <img src={login} alt="login" className="w-8 sm:w-10 md:w-12 lg:w-8 " />
-
-                      </a>
-                      <span className="sr-only">Menu</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="size-4 "
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {
-                    isOpenDropdownLogin &&
+                {/* Mobile menu for logged in users */}
+                {isAuthenticated && (
+                  <div className="relative md:hidden"
+                    onClick={toggleDropdownUser}>
                     <div
-                      className="absolute end-0 z-10 mt-0 w-56  bg-dark-light text-white shadow-lg  "
-                      role="menu"
+                      className="inline-flex items-center overflow-hidden rounded-md text-white"
                     >
-                      <div className="p-2 ">
-                        <Link
-                          to={"https://app.atomico3.io/auth"}
-                          target='_blank'
-                          className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                          role="menuitem"
-                        >
-                          {t("navbar..")}
-                        </Link>
-                        <Link
-                          to={"https://app.atomico3.io/auth"}
-                          target='_blank'
-                          className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500  "
-
-                        >
-                          {t("navbar..")}
-
-                        </Link>
-
-                      </div>
+                      <button
+                        className="flex items-center p-2 text-white hover:text-blue-500"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                          <span className="text-white font-medium">
+                            {user && user.username ? user.username.charAt(0).toUpperCase() : 'U'}
+                          </span>
+                        </div>
+                      </button>
                     </div>
-                  }
-                </div>
-                {/* FIN DROPDWON LANGUAGES*/}
 
+                    {isOpenDropdownUser && (
+                      <div
+                        className="absolute right-0 z-10 mt-2 w-48 bg-dark-light text-white shadow-lg rounded-md"
+                        role="menu"
+                      >
+                        <div className="p-2 border border-gray-700 rounded-md">
+                          {user && user.username && (
+                            <div className="px-4 py-2 text-sm font-medium border-b border-gray-700">
+                              {user.username}
+                            </div>
+                          )}
+                          {user && user.email && (
+                            <div className="px-4 py-2 text-sm text-gray-300 border-b border-gray-700">
+                              {user.email}
+                            </div>
+                          )}
+                          <button
+                            onClick={handleLogout}
+                            className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-700 rounded-md"
+                            role="menuitem"
+                          >
+                            {t('navbar.logout')}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* DROPDOwN INICIAR SESIÓN*/}
+                {!isAuthenticated && (
+                  <div className="relative md:hidden"
+                    onClick={() => toggleDropdownLogin()}>
+                    <div
+                      className="inline-flex items-center overflow-hidden rounded-md text-white"
+                    >
+                      <button
+                        className="h-full flex items-center p-2 text-white hover:text-blue-500"
+                        onClick={() => toggleDropdownLogin()}
+                      >
+                        <a
+                          className="mr-1 py-2 text-sm/none text-white hover:text-blue-500"
+                        >
+                          <img src={login} alt="login" className="w-8 sm:w-10 md:w-12 lg:w-8" />
+                        </a>
+                        <span className="sr-only">Menu</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="size-4"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a 1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {isOpenDropdownLogin && (
+                      <div
+                        className="absolute end-0 z-10 mt-0 w-56 bg-dark-light text-white shadow-lg"
+                        role="menu"
+                      >
+                        <div className="p-2">
+                          <Link
+                            to="/login"
+                            onClick={() => setIsOpenDropdownLogin(false)}
+                            className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
+                            role="menuitem"
+                          >
+                            {t("navbar.iniciar sesion")}
+                          </Link>
+                          <Link
+                            to="/register"
+                            onClick={() => setIsOpenDropdownLogin(false)}
+                            className="text-end block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
+                          >
+                            {t("navbar.registrarse")}
+                          </Link>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
                 <div className="block md:hidden">
                   <button
-                    className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75   "
+                    className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
                     onClick={toggleMenu}
                   >
                     <svg
@@ -898,10 +972,6 @@ export const Navbar = () => {
           <div className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}>
             <nav aria-label="Global">
               <ul className="flex flex-col items-start gap-4 p-4 text-sm">
-
-
-
-
                 <li>
                   {/* DROPDWON PROYECTOS M.H*/}
                   <div className="relative"
@@ -930,7 +1000,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -1001,7 +1071,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -1042,19 +1112,15 @@ export const Navbar = () => {
                             {t("navbar.trabaja")}
                           </a>
                           <button
-                            // href='https://drive.google.com/uc?export=download&id=1GDVfVh34bo7ZvaVWjvwvmqYshgMF3zWf'
-                            // download
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                             role="menuitem"
-                            onClick={() => {toggleDropdownAboutUs(); closeMenu(); setSelectedDocument('brochure'); handleForm();}}
+                            onClick={() => { toggleDropdownAboutUs(); closeMenu(); setSelectedDocument('brochure'); handleForm(); }}
                           >{t("navbar.descargar brochure")}
                           </button>
                           <button
-                            // href="https://drive.google.com/uc?export=download&id=1nGFGAarX3gzUM2ydfFoRhAYQvV0SS_hV"
-                            // download
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                             role="menuitem"
-                            onClick={() => {toggleDropdownAboutUs(); closeMenu(); setSelectedDocument('whitepaper'); handleForm(); }}
+                            onClick={() => { toggleDropdownAboutUs(); closeMenu(); setSelectedDocument('whitepaper'); handleForm(); }}
                           >
                             {t("navbar.descargar whitepaper")}
                           </button>
@@ -1094,7 +1160,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -1126,16 +1192,6 @@ export const Navbar = () => {
                           >
                             Staking
                           </Link>
-                          {/* <a
-                        href="https://dapp-at-3.vercel.app/stakingplus"
-                        target='_blank'
-                        className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                        role="menuitem"
-                        onClick={() => { toggleDropdown(); closeMenu(); }}
-
-                      >
-                        {t("navbar.feliz primavera")}
-                      </a> */}
                           <a
                             href="https://dapp-at-3.vercel.app/"
                             target='_blank'
@@ -1145,15 +1201,6 @@ export const Navbar = () => {
                           >
                             {t("navbar.comprar at3")}
                           </a>
-                          {/* <a
-                        href="https://dapp-at-3.vercel.app/"
-                        target='_blank'
-                        className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                        role="menuitem"
-                        onClick={() => { toggleDropdown(); closeMenu(); }}
-                        >
-                        Peer to Peer
-                      </a> */}
                           <Link
                             to={'/comoInvertir#p2p'}
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
@@ -1162,16 +1209,6 @@ export const Navbar = () => {
                           >
                             Peer to Peer
                           </Link>
-                          {/* Link para promo halloween */}
-                          {/* <Link
-                            to={'/comoInvertir#p2p'}
-                            className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                            role="menuitem"
-                            onClick={() => { toggleDropdown(); closeMenu(); }}
-                          >
-                            Halloween Week!
-                          </Link> */}
-
                           <Link
                             to={'/comoInvertir#tutoriales'}
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
@@ -1216,7 +1253,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -1230,16 +1267,6 @@ export const Navbar = () => {
                         role="menu"
                       >
                         <div className="p-2">
-                          {/* <a
-                        href='https://dapp-at-3.vercel.app'
-                        className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                        role="menuitem"
-                        onClick={() => { toggleDropdown(); closeMenu(); }}
-                        target='_blank'
-
-                      >
-                        Staking
-                      </a> */}
                           <Link
                             to={'/legal/terms'}
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
@@ -1317,7 +1344,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -1366,7 +1393,6 @@ export const Navbar = () => {
 
 
 
-
                 <li>
 
                   {/* DORPDOWN AYUDA */}
@@ -1397,7 +1423,7 @@ export const Navbar = () => {
                         >
                           <path
                             fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clipRule="evenodd"
                           />
                         </svg>
@@ -1415,7 +1441,6 @@ export const Navbar = () => {
 
                           <a
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
-                            // href="#contact"  
                             onClick={(e) => {
                               e.preventDefault();
                               const element = document.getElementById('contact');
@@ -1468,6 +1493,11 @@ export const Navbar = () => {
                     <img src={bra} className='w-[1.5rem] lg:w-[2rem] ml-2 transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500  hover:scale-105  rounded-full' alt="español" />
 
                   </button>
+                </li>
+                <li className="border-t border-gray-700 pt-4 w-full">
+                  <div className="flex flex-col space-y-2">
+                    {getMobileAuthButtons()}
+                  </div>
                 </li>
               </ul>
             </nav>

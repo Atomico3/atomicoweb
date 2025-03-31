@@ -33,7 +33,8 @@
     "politica cookies": "Política de Cookies",
     "faq for law": "Preguntas frecuentes para las fuerzas del orden",
     "iniciar sesion": "Iniciar sesión",
-    "registrarse": "Registrarse"
+    "registrarse": "Registrarse",
+    "logout": "Cerrar sesión"
   },
   "nosotros": {
     "title": "Somos una compañía legalmente constituida en Paraguay, dedicada al desarrollo y optimización de la actividad minera. Les aportamos la herramienta de la tokenización de las reservas de litio certificadas, buscando con esto innovar y revolucionar la industria de la electromovilidad. ",
@@ -55,13 +56,13 @@
     "Misión": "Misión",
     "Misión descripcion": "Mejorar la eficiencia y la transparencia del mercado de litio, abrir nuevas oportunidades para inversores y contribuir al desarrollo económico global."
   },
-    "header": {
-        "bienvenido": "Bienvenido a Atómico3",
-        "criptoactivo": "El primer token (RWA) basado en el litio como subyacente, por estar creado totalmente en base a reservas de litio certificadas",
-        "feliz primavera": "¡Feliz Primavera!",
-        "comprar token": "Comprar Token",
-        "staking": "staking"
-    },
+  "header": {
+    "bienvenido": "Bienvenido a Atómico3",
+    "criptoactivo": "El primer token (RWA) basado en el litio como subyacente, por estar creado totalmente en base a reservas de litio certificadas",
+    "feliz primavera": "¡Feliz Primavera!",
+    "comprar token": "Comprar Token",
+    "staking": "staking"
+  },
   "modal": {
     "feliz primavera descripcion": "El siguiente formulario debe ser completado únicamente por aquellos que hayan comprado AT3 entre las 0:00 del lunes 23 de septiembre y las 23:59 del 7 de Octubre. ",
     "recordatorio descripcion": "Recuerde que aquellos que compren AT3 entre las 0:00 del lunes 23 de septiembre y las 23:59 del 7 de Octubre, para obtener el 5% adicional de la Spring Week deben completar el formulario al cual se accede haciendo click en el botón de 'Feliz Primavera'",
@@ -781,7 +782,8 @@
         "p7": "support@Atómico3.io"
       }
     }
-  }, "faqForLaw": {
+  },
+  "faqForLaw": {
     "faqForLaw": "Preguntas frecuentes para las fuerzas del orden"
   },
   "cookiesPolicy": {
@@ -808,6 +810,62 @@
     "n1": "Cuál es el mineral que podría alcanzar los U$S 8.700 millones en exportaciones para 2030",
     "n2": "Aumento del precio del litio impulsa a la criptomoneda Atómico3 como opción de inversión sólida",
     "n3": "La concreción de proyectos que estaban demorados empezaría a reactivarse tras aumento regional en el precio del litio"
+  },
+  "register": {
+    "title": "Crear una Cuenta",
+    "createAccount": "Crear Tu Cuenta",
+    "contactDetails": "Información de Contacto",
+    "finalDetails": "Información Adicional",
+    "accountDetails": "Cuenta",
+    "contactInfo": "Contacto",
+    "additionalInfo": "Adicional",
+    "username": "Nombre de Usuario",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "passwordHint": "La contraseña debe tener al menos 8 caracteres con letras y números",
+    "confirmPassword": "Confirmar Contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "phoneNumber": "Número de Teléfono",
+    "country": "País",
+    "selectCountry": "Seleccione su país",
+    "address": "Dirección",
+    "addressNumber": "Número de Dirección",
+    "postalCode": "Código Postal",
+    "taxID": "ID Fiscal",
+    "identityDocument": "Documento de Identidad",
+    "walletAddress": "Dirección de Wallet",
+    "isUIFF": "Soy UIFF (Titular Final Individual de Cuenta Financiera)",
+    "isExposed": "Soy una persona políticamente expuesta",
+    "termsTitle": "Términos y Privacidad",
+    "termsDescription": "Al crear una cuenta, acepta nuestros términos y condiciones y política de privacidad.",
+    "agreeTerms": "Estoy de acuerdo con los",
+    "termsLink": "Términos y Condiciones",
+    "next": "Continuar",
+    "previous": "Atrás",
+    "submit": "Crear Cuenta",
+    "processing": "Creando cuenta...",
+    "errorAllFields": "Por favor complete todos los campos requeridos",
+    "errorPasswordMatch": "Las contraseñas no coinciden",
+    "errorPersonalInfo": "Por favor complete toda la información personal requerida",
+    "errorContactInfo": "Por favor complete toda la información de contacto requerida",
+    "errorGeneric": "Registro fallido. Por favor intente nuevamente.",
+    "success": "¡Registro exitoso! Redireccionando...",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signIn": "Iniciar sesión"
+  },
+  "login": {
+    "title": "Iniciar Sesión",
+    "username": "Nombre de Usuario",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "loginButton": "Iniciar sesión",
+    "processing": "Iniciando sesión...",
+    "noAccount": "¿No tienes una cuenta?",
+    "createAccount": "Crear cuenta",
+    "errorCredentials": "Usuario o contraseña inválidos",
+    "errorGeneric": "Error al iniciar sesión. Por favor intenta nuevamente.",
+    "success": "¡Inicio de sesión exitoso! Redireccionando..."
   }
-  
 }
