@@ -34,8 +34,8 @@ const Login = () => {
     try {
       // Use local API server during development
       const API_URL = process.env.NODE_ENV === 'development' 
-        ? 'http://localhost:3003' 
-        : 'https://atomico3-api.vercel.app';
+        ? 'http://66.97.47.32:3003' 
+        : 'http://66.97.47.32:3003';
       
       const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
@@ -54,24 +54,24 @@ const Login = () => {
       console.log('Login successful:', data);
       setSuccess(t('login.success'));
       
-      // Mock data for testing if needed
-      const userData = data.user || {
-        id: '123', 
-        username: credentials.username,
-        email: `${credentials.username}@example.com`
-      };
-      const token = data.token || 'mock-token-123';
-      
-      // Set auth context with user data
-      login(userData, token);
-      
-      // Debug authentication state
-      console.log("Login component - auth state after login:", { userData, token });
-      
-      // Redirect to home page after short delay
-      setTimeout(() => {
-        navigate('/');
-      }, 1500);
+      // IMPORTANT FIX: Make sure we're passing the correct data to login
+      if (data && data.user && data.token) {
+        // Call login with proper parameters
+        login(data.user, data.token);
+        
+        // Debug to verify what we sent to AuthContext
+        console.log("Login component - auth state after login:", { 
+          userSent: data.user, 
+          tokenSent: data.token 
+        });
+        
+        // Add a short delay before redirecting to allow state updates
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
+      } else {
+        throw new Error("Invalid response from server");
+      }
       
     } catch (err) {
       console.error("Login error:", err);

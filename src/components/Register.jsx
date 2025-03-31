@@ -86,10 +86,10 @@ const Register = () => {
     }
 
     try {
-      // Use local API server during development
+      // Use the new server URL
       const API_URL = process.env.NODE_ENV === 'development' 
-        ? 'http://localhost:3003' 
-        : 'https://atomico3-api.vercel.app';
+        ? 'http://66.97.47.32:3003' 
+        : 'http://66.97.47.32:3003';
       
       console.log('Submitting registration data to:', `${API_URL}/api/register`);
       

@@ -43,6 +43,16 @@ async function connectDB() {
   return client;
 }
 
+// Add a basic root route to check if server is running
+app.get('/', (req, res) => {
+  res.status(200).json({ 
+    status: 'success', 
+    message: 'Atomico API server is running!',
+    serverTime: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 // Registration endpoint
 app.post('/api/register', async (req, res) => {
   try {
@@ -211,6 +221,18 @@ app.use('/api', createProxyMiddleware({
 // Start the server
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => {
-  console.log(`API proxy server running on port ${PORT}`);
-  console.log(`Server is using MongoDB URI: ${uri ? 'configured' : 'not configured'}`);
+  console.log(`
+╔════════════════════════════════════════════╗
+║                                            ║
+║   🚀 Atomico API server running on:        ║
+║      http://66.97.47.32:${PORT}             ║
+║                                            ║
+║   📅 Server started at:                    ║
+║      ${new Date().toLocaleString()}        ║
+║                                            ║
+║   🔌 MongoDB connection:                   ║
+║      ${uri ? '✅ Configured' : '❌ Not configured'}             ║
+║                                            ║
+╚════════════════════════════════════════════╝
+  `);
 });
