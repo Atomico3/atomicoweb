@@ -23,9 +23,15 @@ try {
 
 const app = express();
 
-// Enable CORS for all routes
+// Enable CORS for all routes with specific origins for credentials
 app.use(cors({
-  origin: '*', // Allow any origin
+  // Allow specific origins instead of wildcard when using credentials
+  origin: [
+    'http://localhost:5173', 
+    'http://localhost:3000', 
+    'http://66.97.47.32',
+    'https://www.atomico3.io'
+  ],
   credentials: true
 }));
 
@@ -210,8 +216,16 @@ app.use('/api', createProxyMiddleware({
     proxyReq.setHeader('Origin', 'https://atomico3-api.vercel.app');
   },
   onProxyRes: (proxyRes, req, res) => {
-    // Add CORS headers to the proxied response
-    proxyRes.headers['Access-Control-Allow-Origin'] = '*'; // Allow any origin
+    // Add CORS headers to the proxied response - use specific origins instead of wildcard
+    const clientOrigin = req.headers.origin;
+    if (clientOrigin && [
+      'http://localhost:5173', 
+      'http://localhost:3000', 
+      'http://66.97.47.32', 
+      'https://www.atomico3.io'
+    ].includes(clientOrigin)) {
+      proxyRes.headers['Access-Control-Allow-Origin'] = clientOrigin;
+    }
     proxyRes.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
     proxyRes.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization';
     proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
@@ -219,8 +233,8 @@ app.use('/api', createProxyMiddleware({
 }));
 
 // Start the server
-const PORT = process.env.PORT || 3003;
-const SERVER_URL = 'http://66.97.47.32:3003';
+const PORT = process.env.PORT || 80;
+const SERVER_URL = 'http://66.97.47.32';
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ╔════════════════════════════════════════════╗

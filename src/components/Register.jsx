@@ -87,7 +87,7 @@ const Register = () => {
 
     try {
       // Use consistent server URL
-      const API_URL = 'http://66.97.47.32:3003';
+      const API_URL = 'http://66.97.47.32';
       
       console.log('Submitting registration data to:', `${API_URL}/api/register`);
       

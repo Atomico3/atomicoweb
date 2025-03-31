@@ -32,7 +32,7 @@ Make sure you have the necessary environment variables:
    ```
    VITE_MONGODB_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
-   PORT=3003
+   PORT=80
    ```
 
 2. Install dependencies if you haven't already:
@@ -53,12 +53,12 @@ You can test the API using tools like Postman or curl:
 
 ```bash
 # Register a new user
-curl -X POST http://localhost:3003/api/register \
+curl -X POST http://localhost:80/api/register \
   -H "Content-Type: application/json" \
   -d '{"username": "testuser", "email": "test@example.com", "password": "password123"}'
 
 # Login
-curl -X POST http://localhost:3003/api/login \
+curl -X POST http://localhost:80/api/login \
   -H "Content-Type: application/json" \
   -d '{"username": "testuser", "password": "password123"}'
 ```
