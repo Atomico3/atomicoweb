@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const { t } = useTranslation('global');
   const navigate = useNavigate();
-  const { login } = useAuth();
   
   const [credentials, setCredentials] = useState({
     username: '',
@@ -63,14 +61,21 @@ const Login = () => {
       setSuccess(t('login.success'));
       
       if (data && data.user && data.token) {
-        // Call login with correct parameters
-        login(data.user, data.token);
+        // Store auth data directly in localStorage
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('isAuthenticated', 'true');
         
-        // Debug to verify what we sent to AuthContext
-        console.log("Login component - auth state after login:", { 
-          userSent: data.user, 
-          tokenSent: data.token 
+        // Add timestamp for potential token expiration checks
+        localStorage.setItem('loginTime', Date.now().toString());
+        
+        console.log("Auth data stored in localStorage:", { 
+          user: data.user, 
+          isAuthenticated: true 
         });
+        
+        // Trigger a custom event so other components can react
+        window.dispatchEvent(new Event('storage-login'));
         
         setTimeout(() => {
           navigate('/');
@@ -78,7 +83,6 @@ const Login = () => {
       } else {
         throw new Error("Server response missing required user data or token");
       }
-      
     } catch (err) {
       console.error("Login error:", err);
       setError(err.message || t('login.errorGeneric'));

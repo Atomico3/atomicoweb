@@ -7,19 +7,46 @@ import esp from '../assets/lang/esp.png';
 import bra from '../assets/lang/brazil.png';
 import login from '../assets/login.png';
 import { Form } from './Form';
-import { useAuth } from '../context/AuthContext'; 
 
 export const Navbar = () => {
   const [t, i18n] = useTranslation("global");
   const navigate = useNavigate();
   
-  // Debug authentication state
-  const auth = useAuth();
-  const isAuthenticated = auth?.isAuthenticated || false;
-  const user = auth?.user || null;
+  // Read auth state directly from localStorage
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('isAuthenticated') === 'true');
+  const [user, setUser] = useState(() => {
+    try {
+      const userData = localStorage.getItem('user');
+      return userData ? JSON.parse(userData) : null;
+    } catch (error) {
+      console.error('Error parsing user data from localStorage:', error);
+      return null;
+    }
+  });
   
-  console.log("Auth state in Navbar:", { isAuthenticated, user });
-
+  // Listen for storage events (login/logout)
+  useEffect(() => {
+    const handleStorageEvent = () => {
+      setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+      try {
+        const userData = localStorage.getItem('user');
+        setUser(userData ? JSON.parse(userData) : null);
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        setUser(null);
+      }
+    };
+    
+    // Listen to custom events
+    window.addEventListener('storage-login', handleStorageEvent);
+    window.addEventListener('storage-logout', handleStorageEvent);
+    
+    return () => {
+      window.removeEventListener('storage-login', handleStorageEvent);
+      window.removeEventListener('storage-logout', handleStorageEvent);
+    };
+  }, []);
+  
   // Estados para cada dropdown
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
@@ -37,9 +64,17 @@ export const Navbar = () => {
   // Function to handle logout
   const handleLogout = () => {
     console.log("Logout clicked");
-    if (auth && auth.logout) {
-      auth.logout();
-    }
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('loginTime');
+    
+    setUser(null);
+    setIsAuthenticated(false);
+    
+    // Trigger event so other components can react
+    window.dispatchEvent(new Event('storage-logout'));
+    
     setIsOpenDropdownUser(false);
     navigate('/');
   };
@@ -125,7 +160,7 @@ export const Navbar = () => {
   };
 
   const getAuthButtons = () => {
-    if (auth?.isAuthenticated && auth?.user) {
+    if (isAuthenticated && user) {
       return (
         <div className="relative" onMouseLeave={() => setIsOpenDropdownUser(false)}>
           <button
@@ -135,10 +170,10 @@ export const Navbar = () => {
           >
             <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
               <span className="text-white font-medium">
-                {auth.user.username ? auth.user.username.charAt(0).toUpperCase() : 'U'}
+                {user.username ? user.username.charAt(0).toUpperCase() : 'U'}
               </span>
             </div>
-            <span className="hidden sm:inline">{auth.user.username}</span>
+            <span className="hidden sm:inline">{user.username}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -159,9 +194,9 @@ export const Navbar = () => {
               role="menu"
             >
               <div className="p-2 border border-gray-700 rounded-md">
-                {auth.user.email && (
+                {user.email && (
                   <div className="px-4 py-2 text-sm text-gray-300 border-b border-gray-700">
-                    {auth.user.email}
+                    {user.email}
                   </div>
                 )}
                 <button
@@ -197,20 +232,20 @@ export const Navbar = () => {
   };
 
   const getMobileAuthButtons = () => {
-    if (auth?.isAuthenticated && auth?.user) {
+    if (isAuthenticated && user) {
       return (
         <>
           <div className="flex items-center space-x-2 py-2">
             <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
               <span className="text-white font-medium">
-                {auth.user.username ? auth.user.username.charAt(0).toUpperCase() : 'U'}
+                {user.username ? user.username.charAt(0).toUpperCase() : 'U'}
               </span>
             </div>
-            <span className="text-white">{auth.user.username}</span>
+            <span className="text-white">{user.username}</span>
           </div>
-          {auth.user.email && (
+          {user.email && (
             <div className="text-sm text-gray-300 py-2">
-              {auth.user.email}
+              {user.email}
             </div>
           )}
           <button

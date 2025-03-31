@@ -146,7 +146,14 @@ const Register = () => {
         const loginData = await loginResponse.json();
         
         if (loginResponse.ok && loginData.user && loginData.token) {
-          login(loginData.user, loginData.token);
+          // Store auth data directly in localStorage
+          localStorage.setItem('user', JSON.stringify(loginData.user));
+          localStorage.setItem('token', loginData.token);
+          localStorage.setItem('isAuthenticated', 'true');
+          localStorage.setItem('loginTime', Date.now().toString());
+          
+          // Trigger event so other components can react
+          window.dispatchEvent(new Event('storage-login'));
           
           // Redirect to home page after short delay
           setTimeout(() => {
