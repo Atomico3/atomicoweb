@@ -248,7 +248,7 @@ app.use('/api', createProxyMiddleware({
 // Start the server
 const PORT = process.env.PORT || 3003;
 const SERVER_URL = 'http://66.97.47.32:3003';
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ╔════════════════════════════════════════════╗
 ║                                            ║
@@ -263,4 +263,6 @@ app.listen(PORT, () => {
 ║                                            ║
 ╚════════════════════════════════════════════╝
   `);
+  console.log('Server is listening on all network interfaces (0.0.0.0)');
+  console.log('If you cannot access the server externally, check your firewall settings');
 });
