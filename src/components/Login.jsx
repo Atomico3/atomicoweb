@@ -38,7 +38,7 @@ const Login = () => {
 
     try {
       // Use the server URL
-      const API_URL = 'http://66.97.47.32';
+      const API_URL = 'https://api3.atomico3.io';
       
       console.log('Attempting login with server:', API_URL);
       
