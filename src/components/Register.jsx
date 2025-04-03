@@ -87,7 +87,7 @@ const Register = () => {
 
     try {
       // Use consistent server URL
-      const API_URL = 'http://66.97.47.32';
+      const API_URL = 'https://api3.atomico3.io';
       
       console.log('Submitting registration data to:', `${API_URL}/api/register`);
       
