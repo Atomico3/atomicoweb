@@ -131,9 +131,17 @@ export const AtomicInfo: React.FC = () => {
                             </p>
                             <p className='px-4 leading-2 break-words text-sm lg:text-xl text-left'>
                                 {t("atomicInfo.p4")}
-                                <span className='text-sm md:text-2xl text-celeste font-bold'>0xAfF655c15c943121Dea79B67c47ac9BD2253FD65.</span> <br />
-                                {t("atomicInfo.p5")}
-                               <span className='text-sm md:text-2xl text-celeste font-bold'>0x22a79a08ddb74A9F1A4eBE5da75300Ad9f1AED76</span>
+                                <h3 className='text-xl font-bold mt-4'>Nuestra billetera oficial es la</h3>
+                                <span className='text-sm md:text-2xl text-celeste font-bold'>0xAfF655c15c943121Dea79B67c47ac9BD2253FD65</span> <br />
+                                <h3 className='text-xl font-bold mt-4'>Nuestro contrato POLYGON es</h3>
+                                <span className='text-sm md:text-2xl text-celeste font-bold'>0x22a79a08ddb74A9F1A4eBE5da75300Ad9f1AED76</span>
+                                <br />
+                                <h3 className='text-xl font-bold mt-4'>Nuestro contrato CARDANO</h3>
+                                <button className="inline-block px-5 py-2 mt-2 text-sm md:text-2xl font-extrabold 
+                                                   bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg 
+                                                   shadow-lg hover:from-blue-500 hover:to-blue-700 transition-all">
+                                    asset10n0du9x28k3weydqsx9204vteyzg7j09qdpq67
+                                </button>
                             </p>
                         </div>
 
