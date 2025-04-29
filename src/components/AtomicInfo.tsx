@@ -182,9 +182,7 @@ export const AtomicInfo: React.FC = () => {
                         <p className="text-base text-justify mb-4">
                             Nos complace anunciar un paso fundamental para el ecosistema de Atómico3.
                         </p>
-                        <p className="text-base text-justify mb-4">
-                            En colaboración con nuestro socio tecnológico, ZenGate Global, hemos decidido trabajar juntos para hacer evolucionar al token de Atomico3 (hacia un token algorítmico), por estar su precio fijado no ya por un stable coin sino basado en el precio del litio como commodity.
-                        </p>
+                       
                         <p className="text-base text-justify mb-4">
                             Esta alianza estratégica nos va a permitir migrar y llevar a Atomico3 desde la red Polygon a la red Cardano.
                         </p>
