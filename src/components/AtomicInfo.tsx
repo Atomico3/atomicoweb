@@ -193,22 +193,7 @@ export const AtomicInfo: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <div className="flex flex-col items-center">
-                            <img src={migration1} alt="Migración 1" className="w-48 mb-4" />
-                            <p className="text-center text-black text-lg">{t("ZENGATE")}</p>
-                            <p className="text-center text-black text-sm">{t("Una empresa líder en tecnología")}</p>
-                            <p className="text-center text-black text-sm">{t("que crea soluciones empresariales para empresas y gobiernos en todo el mundo")}</p>
-                            <p className="text-center text-black text-sm">{t("Su producto principal es la Plataforma Palmyra")}</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src={migration2} alt="Migración 2" className="w-48 mb-4" />
-                            <p className="text-center text-black text-lg">{t("CARDANO")}</p>
-                            <p className="text-center text-black text-sm">{t("Una plataforma blockchain para innovadores y visionarios")}</p>
-                            <p className="text-center text-black text-sm">{t("que proporciona las herramientas y tecnologías")}</p>
-                            <p className="text-center text-black text-sm">{t("necesarias para crear posibilidades para muchos")}</p>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 {/* Sección de PARTNERS */}

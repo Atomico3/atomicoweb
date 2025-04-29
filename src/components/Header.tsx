@@ -36,19 +36,7 @@ export const Header = () => {
             </p>
           </div>
 
-          <div className='hidden sm:block w-1/5 flex flex-col items-center justify-center'>
-            <div className='h-full flex flex-col items-center justify-center'>
-              <p className='w-full text-center text-shadow-bl text-2xl'>
-                Partner tecnológico
-              </p>
-              <div className="flex flex-col items-center mb-4">
-                <img src={migration1} alt="ZenGate" className='w-[100px] mb-2' />
-                <p className='text-center text-shadow-bl text-lg'>ZENGATE GLOBAL</p>
-              </div>
-              <img src={cardano} alt="" className='bg-white rounded-[200px] w-[100px]' />
-              <img src={cardanoWord} alt="" className='bg-white rounded-[200px] w-[125px] mt-2 object-cover' />
-            </div>
-          </div>
+          
         </article>
 
         <article className='w-full h-full'>
