@@ -1,339 +1,149 @@
-import React from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
+import "./Faq.css"
 
 export const Faq = React.forwardRef<HTMLDivElement>((_props, ref: any) => {
-
   const [t] = useTranslation("global")
-  return (
-    <>
-    <h1 id="faq" ref={ref} className="text-3xl lg:text-6xl font-bold sm:text-4xl text-celeste text-center mb-12 pt-20 lg:mt-20 lg:mb-20 lg:py-2 ">{t("faq.preguntas frecuentes")}</h1>
-    <div className="space-y-4 lg:w-2/3 lg:mx-auto px-4">
-  <details
-    className="group rounded-lg  p-6 bg-celeste [&_summary::-webkit-details-marker]:hidden"
-    open
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 lg:text-2xl text-white"
-    >
-      <h2 className="font-medium text-white">{t("faq.que es atomico")} </h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 size-5 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 size-5 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white lg:text-lg">
-   {t("faq.que es atomico descripcion")}
-    </p>
-  </details>
-
-  <details
-    className="bg-celeste  group rounded-lg   p-6  [&_summary::-webkit-details-marker]:hidden"
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 text-white "
-    >
-      <h2 className="font-medium text-white lg:text-2xl">{t("faq.¿Por qué no veo reflejado el precio de Atómico3 en mi billetera?")}</h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white  lg:text-lg">
-    {t("faq.El token se encuentra en lista de espera en CoinMarketCap")}
-    </p>
-  </details>
-  <details
-    className="group rounded-lg bg-celeste  p-6  [&_summary::-webkit-details-marker]:hidden"
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 text-white "
-    >
-      <h2 className="font-medium text-white lg:text-2xl">{t("faq.¿Dónde puedo ver la valuación de Atómico3?")}</h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white  lg:text-lg">
-  {t("faq.Puedes ver la valuación actual de Atómico3 en Dex descentralizadas como Quickswap")}
-    </p>
-  </details>
-  <details
-    className="group rounded-lg bg-celeste  p-6  [&_summary::-webkit-details-marker]:hidden"
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 text-white "
-    >
-      <h2 className="font-medium text-white lg:text-2xl">{t("faq.¿Por qué el token Atómico3 no tiene liquidez?")}</h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white  lg:text-lg">
-    {t("faq.El token fue lanzado el 12 de agosto y la liquidez formal será inyectada cuando éste sea listado en CoinMarketCap (para lo cual estamos trabajando)")}
-
-
-    </p>
-  </details>
-  <details
-    className="group rounded-lg bg-celeste  p-6  [&_summary::-webkit-details-marker]:hidden"
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 text-white "
-    >
-      <h2 className="font-medium text-white lg:text-2xl">{t("faq.¿Cuál es el contrato de Atómico3?")}</h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white  lg:text-lg break-words">
-   {t("faq.El contrato de token es el siguiente en la red Polygon")}
-
-    </p>
-  </details>
-  <details
-    className="group rounded-lg bg-celeste  p-6  [&_summary::-webkit-details-marker]:hidden"
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 text-white "
-    >
-      <h2 className="font-medium text-white lg:text-2xl">{t("faq.¿Proyección del precio de Atómico3 en el futuro?")}</h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white  lg:text-lg">
-   {t("faq.Se comportará en relación al precio de carbonato de litio internacional (li2co3)")}
-    <br />
-    {/* {t("faq.Link para consultar el precio actual del carbonato de litio")} <a href="https://es.investing.com/commodities/lithium-carbonate-99.5-min-china-futures?utm_source=investing_app&utm_medium=share_link&utm_campaign=share_instrument" className="text-blue-500 underline" target="_blank">{t("faq.Click aquí")}</a>  */}
-      
-    </p>
-  </details>
-  <details
-    className="group rounded-lg bg-celeste  p-6  [&_summary::-webkit-details-marker]:hidden"
-  >
-    <summary
-      className="flex cursor-pointer items-center justify-between gap-1.5 text-white "
-    >
-      <h2 className="font-medium text-white lg:text-2xl">{t("faq.¿Ya puedo hacer staking de los AT3 que adquirí?")}</h2>
-
-      <span className="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-100 group-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute inset-0 opacity-0 group-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </span>
-    </summary>
-
-    <p className="mt-4 leading-relaxed text-white  lg:text-lg">
-    {t("faq.Si puedo")}
-    </p>
-  </details>
+  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
   
+  // Toggle question
+  const toggleQuestion = (index: number) => {
+    setActiveQuestion(activeQuestion === index ? null : index);
+  };
+  
+  // Animation on scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
-</div>
-    </>
-  )
-})
+  // FAQ questions
+  const questions = [
+    {
+      question: t("faq.que es atomico"),
+      answer: t("faq.que es atomico descripcion")
+    },
+    {
+      question: t("faq.¿Por qué no veo reflejado el precio de Atómico3 en mi billetera?"),
+      answer: t("faq.El token se encuentra en lista de espera en CoinMarketCap")
+    },
+    {
+      question: t("faq.¿Dónde puedo ver la valuación de Atómico3?"),
+      answer: t("faq.Puedes ver la valuación actual de Atómico3 en Dex descentralizadas como Quickswap")
+    },
+    {
+      question: t("faq.¿Por qué el token Atómico3 no tiene liquidez?"),
+      answer: t("faq.El token fue lanzado el 12 de agosto y la liquidez formal será inyectada cuando éste sea listado en CoinMarketCap (para lo cual estamos trabajando)")
+    },
+    {
+      question: t("faq.¿Cuál es el contrato de Atómico3?"),
+      answer: t("faq.El contrato de token es el siguiente en la red Polygon")
+    },
+    {
+      question: t("faq.¿Proyección del precio de Atómico3 en el futuro?"),
+      answer: t("faq.Se comportará en relación al precio de carbonato de litio internacional (li2co3)")
+    },
+    {
+      question: t("faq.¿Ya puedo hacer staking de los AT3 que adquirí?"),
+      answer: t("faq.Si puedo")
+    }
+  ];
+
+  return (
+    <section ref={sectionRef} className={`faq-section ${isVisible ? 'visible' : ''}`}>
+      <div ref={ref} id="faq" className="faq-anchor"></div>
+      
+      {/* Decorative Elements */}
+      <div className="faq-decoration">
+        <div className="faq-blob faq-blob-1"></div>
+        <div className="faq-blob faq-blob-2"></div>
+        <div className="faq-rings">
+          <div className="faq-ring faq-ring-1"></div>
+          <div className="faq-ring faq-ring-2"></div>
+          <div className="faq-ring faq-ring-3"></div>
+        </div>
+        <div className="faq-dots">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i}
+              className="faq-dot"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+      
+      <div className="container">
+        <div className="faq-header">
+          <div className="section-badge">FAQ</div>
+          <h1 className="faq-title">{t("faq.preguntas frecuentes")}</h1>
+          <p className="faq-subtitle">Todo lo que necesitas saber sobre Atomico 3</p>
+        </div>
+        
+        <div className="faq-container">
+          {questions.map((faq, index) => (
+            <div 
+              className={`faq-item ${activeQuestion === index ? 'active' : ''}`}
+              key={index}
+            >
+              <button 
+                className="faq-question"
+                onClick={() => toggleQuestion(index)}
+                aria-expanded={activeQuestion === index}
+              >
+                <span>{faq.question}</span>
+                <div className="faq-icon">
+                  <span className="faq-icon-bar"></span>
+                  <span className="faq-icon-bar"></span>
+                </div>
+              </button>
+              <div 
+                className="faq-answer"
+                style={{
+                  maxHeight: activeQuestion === index ? '500px' : '0'
+                }}
+              >
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="faq-contact">
+          <div className="contact-content">
+            <h3>¿Tienes más preguntas?</h3>
+            <p>Nuestro equipo está disponible para resolver todas tus dudas.</p>
+          </div>
+          <div className="contact-button-container">
+            <a href="#/contacto" className="contact-button">Contáctanos<span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+});

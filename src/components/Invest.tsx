@@ -1,164 +1,195 @@
-import padlock from '../assets/padlock.png'
-import technology from '../assets/technology.png'
-import support from '../assets/support.png'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect, useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import padlock from '../assets/padlock.png';
+import technology from '../assets/technology.png';
+import support from '../assets/support.png';
+import './Invest.css';
 
 export const Invest = () => {
-  const [t] = useTranslation("global")
+  const [t] = useTranslation("global");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  
+  // Animation on scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1
+      }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Parallax effect on mouse move
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current && isVisible) {
+        const moveX = (window.innerWidth / 2 - e.clientX) / 70;
+        const moveY = (window.innerHeight / 2 - e.clientY) / 70;
+        
+        // Apply subtle parallax to background elements
+        const bgPatterns = document.querySelectorAll('.invest-bg-element');
+        bgPatterns.forEach((pattern, index) => {
+          const depth = index % 3 === 0 ? 2 : 1;
+          (pattern as HTMLElement).style.transform = `translateX(${moveX * depth}px) translateY(${moveY * depth}px)`;
+        });
+      }
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isVisible]);
+  
+  const benefits = [
+    {
+      id: 1,
+      icon: padlock,
+      title: t("InvestSection.Seguridad") || "Seguridad",
+      description: t("InvestSection.Seguridad descripcion") || "Nuestros contratos inteligentes han sido auditados por expertos en seguridad blockchain, garantizando que tu inversión esté protegida."
+    },
+    {
+      id: 2,
+      icon: technology,
+      title: t("InvestSection.tecnologia y beneficios") || "Tecnología y beneficios",
+      description: t("InvestSection.tecnologia y beneficios descripcion") || "Utilizamos la tecnología más avanzada de Cardano para proporcionar transacciones rápidas, seguras y con bajas comisiones."
+    },
+    {
+      id: 3,
+      icon: support,
+      title: t("InvestSection.soporte") || "Soporte",
+      description: t("InvestSection.soporte descripcion") || "Nuestro equipo de soporte está disponible para ayudarte en cada paso del proceso de inversión y responder a todas tus preguntas."
+    }
+  ];
 
   return (
-    <>
-    <section className=" bg-white ">
-  <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 mx-auto ">
-    <div className="w-full">
-      <h2 className="text-3xl font-bold sm:text-7xl text-celeste w-full text-center ">{t("InvestSection.¿Por qué invertir en Atómico3?")}</h2>
-
-     
-    </div>
-
-    <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-      <div className="flex flex-col items-start justify-start gap-4  rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default">
-        <span className="shrink-0 rounded-lg pt-1 text-center flex justify-center">
-         <img src={padlock} alt="padlock" className='w-12 text-center'  />
-        </span>
-
-        <div >
-          <h2 className="text-lg text-celeste font-bold">{t("InvestSection.Seguridad")}
-          </h2>
-
-          <p className="mt-1 text-sm text-black">
-          {t("InvestSection.Seguridad descripcion")}
-          </p>
+    <section ref={sectionRef} className="invest-section">
+      {/* Enhanced background patterns */}
+      <div className="invest-bg-pattern"></div>
+      <div className="invest-bg-elements">
+        {[...Array(6)].map((_, i) => (
+          <div 
+            key={i}
+            className="invest-bg-element"
+            style={{
+              top: `${i % 2 === 0 ? 20 + (i * 10) : 60 - (i * 8)}%`,
+              left: `${i % 3 === 0 ? 5 + (i * 15) : 80 - (i * 12)}%`,
+              opacity: 0.05 + (i * 0.01),
+              transform: `rotate(${i * 15}deg)`
+            }}
+          ></div>
+        ))}
+        <div className="invest-particles">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i}
+              className="invest-particle"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                width: `${Math.random() * 6 + 2}px`,
+                height: `${Math.random() * 6 + 2}px`,
+                animationDuration: `${Math.random() * 20 + 15}s`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            ></div>
+          ))}
         </div>
       </div>
-
-      <div className="flex flex-col items-start justify-start gap-4  rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default">
-        <span className="shrink-0 rounded-lg  pt-1">
-         <img src={technology} alt="technology" className='w-12' />
-        </span>
-
-        <div>
-          <h2 className="text-lg text-celeste font-bold">{t("InvestSection.tecnologia y beneficios")}</h2>
-
-          <p className="mt-1 text-sm text-black">
-          {t("InvestSection.tecnologia y beneficios descripcion")}            
-          </p>
+      
+      <div className="container">
+        <div className={`invest-content ${isVisible ? 'visible' : ''}`}>
+          <div className="invest-header">
+            <div className="section-badge">Invertir</div>
+            <h2 className="invest-title">{t("InvestSection.¿Por qué invertir en Atómico3?") || "¿Por qué invertir en Atómico3?"}</h2>
+            <p className="invest-subtitle">
+              Descubre las ventajas únicas que Atomico 3 ofrece para inversores
+            </p>
+            <div className="title-decoration">
+              <div className="title-line"></div>
+              <div className="title-dot"></div>
+              <div className="title-line"></div>
+            </div>
+          </div>
+          
+          <div className="invest-grid">
+            {benefits.map((benefit) => (
+              <div 
+                className={`invest-card ${activeCard === benefit.id ? 'active' : ''}`} 
+                key={benefit.id}
+                onMouseEnter={() => setActiveCard(benefit.id)}
+                onMouseLeave={() => setActiveCard(null)}
+              >
+                <div className="card-content">
+                  <div className="card-icon">
+                    <img src={benefit.icon} alt={benefit.title} />
+                    <div className="icon-glow"></div>
+                  </div>
+                  <h3 className="card-title">{benefit.title}</h3>
+                  <p className="card-description">{benefit.description}</p>
+                </div>
+                <div className="card-decoration"></div>
+                <div className="card-shine"></div>
+                <div className="card-border"></div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="invest-stats">
+            <div className="stat-item">
+              <div className="stat-value"><span className="counter">9000</span>+</div>
+              <div className="stat-label">Inversores</div>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <div className="stat-value">$<span className="counter">2.3</span>M</div>
+              <div className="stat-label">Capitalización</div>
+            </div>
+            <div className="stat-divider"></div>
+            <div className="stat-item">
+              <div className="stat-value"><span className="counter">100</span>%</div>
+              <div className="stat-label">Transparencia</div>
+            </div>
+          </div>
+          
+          <div className="invest-cta">
+            <a href="https://at3selling.vercel.app/" className="invest-button primary">
+              <span>Invertir ahora</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              <div className="button-shine"></div>
+            </a>
+            <a href="#/comoInvertir" className="invest-button secondary">
+              <span>Más información</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-
-      <div className="flex flex-col items-start justify-start gap-4  rounded-xl border border-celeste p-6 sm:p-8 shadow-xl transition hover:border-celeste hover:shadow-light-blue hover:cursor-default">
-        <span className="shrink-0 rounded-lg  pt-1">
-          <img src={support} alt="support" className='w-12' />
-        </span>
-
-
-        <div>
-          <h2 className="text-lg text-celeste font-bold"> {t("InvestSection.soporte")}  </h2>
-
-          <p className="mt-1 text-sm text-black">
-          {t("InvestSection.soporte descripcion")}
-          </p>
-        </div>
-      </div>
-
-      {/* <div className="flex items-start gap-4">
-        <span className="shrink-0 rounded-lg bg-gray-800 p-4">
-          <svg
-            className="size-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-            <path
-              d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-            ></path>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-            ></path>
-          </svg>
-        </span>
-
-        <div>
-          <h2 className="text-lg font-bold">Lorem, ipsum dolor.</h2>
-
-          <p className="mt-1 text-sm text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error cumque tempore est ab
-            possimus quisquam reiciendis tempora animi! Quaerat, saepe?
-          </p>
-        </div>
-      </div> */}
-
-      {/* <div className="flex items-start gap-4">
-        <span className="shrink-0 rounded-lg bg-gray-800 p-4">
-          <svg
-            className="size-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-            <path
-              d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-            ></path>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-            ></path>
-          </svg>
-        </span>
-
-        <div>
-          <h2 className="text-lg font-bold">Lorem, ipsum dolor.</h2>
-
-          <p className="mt-1 text-sm text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error cumque tempore est ab
-            possimus quisquam reiciendis tempora animi! Quaerat, saepe?
-          </p>
-        </div>
-      </div> */}
-
-      {/* <div className="flex items-start gap-4">
-        <span className="shrink-0 rounded-lg bg-gray-800 p-4">
-          <svg
-            className="size-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-            <path
-              d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-            ></path>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-            ></path>
-          </svg>
-        </span>
-
-        <div>
-          <h2 className="text-lg font-bold">Lorem, ipsum dolor.</h2>
-
-          <p className="mt-1 text-sm text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Error cumque tempore est ab
-            possimus quisquam reiciendis tempora animi! Quaerat, saepe?
-          </p>
-        </div>
-      </div> */}
-    </div>
-  </div>
-</section>
-    </>
-  )
-}
+    </section>
+  );
+};
