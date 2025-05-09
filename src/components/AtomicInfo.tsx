@@ -9,104 +9,11 @@ import partner2 from '../assets/partners/partner2.png';
 import migration1 from '../assets/migration/migration1.png';
 import migration2 from '../assets/migration/migration2.png';
 
-// Welcome Popup
-const WelcomePopup: React.FC = () => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [isClosing, setIsClosing] = React.useState(false);
-
-    React.useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsOpen(true);
-        }, 300);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    const handleClose = () => {
-        setIsClosing(true);
-        setTimeout(() => {
-            setIsOpen(false);
-        }, 500);
-    };
-
-    if (!isOpen) return null;
-
-    return (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-500 
-            ${isClosing ? 'opacity-0' : 'opacity-100'}`}>
-            <div 
-                className={`absolute inset-0 backdrop-blur-sm bg-black/30 transition-opacity duration-500
-                ${isClosing ? 'opacity-0' : 'opacity-100'}`} 
-                onClick={handleClose}
-            />
-            
-            <div 
-                className={`relative bg-gradient-to-br from-white via-blue-50 to-blue-100 
-                    rounded-2xl p-12 max-w-4xl w-full mx-4 text-center shadow-2xl
-                    transform transition-all duration-500 ease-in-out
-                    ${isClosing ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}
-                    ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
-            >
-                <button
-                    onClick={handleClose}
-                    className="absolute top-6 right-6 text-gray-400 hover:text-blue-600 transition-colors duration-300
-                        transform hover:scale-110 hover:rotate-180 transition-transform duration-300"
-                >
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-
-                <h2 className="text-4xl font-bold mb-10 bg-gradient-to-r from-blue-600 to-blue-400 
-                    bg-clip-text text-transparent">
-                    BIENVENIDO A ATOMICO 3
-                </h2>
-
-                {/* Sección de Migración a Cardano (Movida al inicio) */}
-                <div className="space-y-6 mb-12">
-                    <p className="text-xl text-gray-700 font-medium mb-8">
-                        PREPARATE PARA LA MIGRACION A CARDANO
-                    </p>
-
-                    <a
-                        href="#/comoInvertir"
-                        className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
-                            text-white rounded-xl hover:from-blue-500 hover:to-blue-700 transform hover:-translate-y-1 
-                            transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                        MIGRACION A CARDANO
-                    </a>
-                </div>
-				
-				       <div className="space-y-6 mb-12">
-                    <p className="text-xl text-gray-700 font-medium mb-8">
-                        ULTIMA OPORTUNIDAD DE ADQUIRIR ATOMICO 3 
-                    </p>
-
-                    <a
-                        href="https://at3selling.vercel.app/"
-                        className="inline-block px-8 py-4 text-lg font-semibold bg-gradient-to-r from-blue-400 to-blue-600 
-                            text-white rounded-xl hover:from-blue-500 hover:to-blue-700 transform hover:-translate-y-1 
-                            transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                        COMPRA ATOMICO 3
-                    </a>
-                </div>
-
-
-              
-                                
-            </div>
-        </div>
-    );
-};
-
 export const AtomicInfo: React.FC = () => {
     const [t] = useTranslation("global");
 
     return (
         <>
-            <WelcomePopup />
             <section className="relative text-white bg-white pb-7">
                 <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8 overflow-hidden bg-cover bg-no-repeat p-8 md:p-12 lg:px-16 lg:py-24"
                     style={{
@@ -116,7 +23,7 @@ export const AtomicInfo: React.FC = () => {
                         backgroundSize: 'cover'
                     }}>
                     <div className="mx-auto w-full text-center max-w-screen-lg flex flex-col md:flex-row">
-                        <div className="md:w-2/3">
+                        <div className="md:w-full">
                             <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-celeste">
                                 {t("atomicInfo.que es atomico")}
                             </h2>
@@ -144,33 +51,6 @@ export const AtomicInfo: React.FC = () => {
                                 </button>
                             </p>
                         </div>
-
-                        <div className="md:w-1/3 mt-8 md:mt-0">
-                            <h2 className="text-2xl font-bold text-celeste mb-4 text-center">COMPRA ATOMICO 3</h2>
-                            <div className="relative" style={{ 
-                                width: '150%', 
-                                height: '20', 
-                                paddingBottom: '200%',
-                                borderRadius: '35px', 
-                                overflow: 'hidden' 
-                            }}>
-                                <iframe
-                                    src="https://at3selling.vercel.app/"
-                                    title="Atomico3 Compra"
-                                    style={{
-                                        position: 'absolute',
-                                        top: '0',
-                                        left: '0',
-                                        width: '100%',
-                                        height: '100%',
-                                        border: 'none',
-                                        borderRadius: '35px',
-                                        backgroundColor: 'transparent',
-                                    }}
-                                    allow="ethereum"
-                                />
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -190,8 +70,6 @@ export const AtomicInfo: React.FC = () => {
                             Este movimiento nos permite aprovechar sus capacidades avanzadas, para introducir la tokenizacion (novedoso mecanismo de financiamiento para activos mineros), utilizando tecnología de tokens algorítmicos, respaldada por reservas de litio certificadas ajustadas por el valor del litio.
                         </p>
                     </div>
-
-                    
                 </div>
 
                 {/* Sección de PARTNERS */}
