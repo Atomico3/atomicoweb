@@ -201,33 +201,7 @@ export const AtomicInfo: React.FC = () => {
                             </div>
                         </div>
                         
-                        <div className="info-cta">
-                            <h3>COMPRA ATOMICO 3</h3>
-                            <div className="cta-glow"></div>
-                            <div className="purchase-options">
-                                <a href="https://at3selling.vercel.app/" className="buy-button">
-                                    <div className="button-content">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <circle cx="9" cy="21" r="1"></circle>
-                                            <circle cx="20" cy="21" r="1"></circle>
-                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                        </svg>
-                                        <span>Comprar AT3</span>
-                                    </div>
-                                    <div className="button-shine"></div>
-                                </a>
-                                <a href="#/comoInvertir" className="info-button">
-                                    <div className="button-content">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                                        </svg>
-                                        <span>Más Información</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
