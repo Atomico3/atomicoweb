@@ -155,49 +155,48 @@ export const AtomicInfo: React.FC = () => {
                             <p className="animated-text delay-2">{t("atomicInfo.p3")}</p>
                             
                             <div className="contract-info">
-                                <h3 className="contract-title">Nuestra billetera oficial es la</h3>
-                                <div className="contract-address">
-                                    <span>0xAfF655c15c943121Dea79B67c47ac9BD2253FD65</span>
-                                    <button 
-                                        className="copy-btn" 
-                                        onClick={() => copyToClipboard('0xAfF655c15c943121Dea79B67c47ac9BD2253FD65')}
-                                        aria-label="Copiar dirección de billetera"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-
-                                <h3 className="contract-title">Nuestro contrato POLYGON es</h3>
-                                <div className="contract-address">
-                                    <span>0x22a79a08ddb74A9F1A4eBE5da75300Ad9f1AED76</span>
-                                    <button 
-                                        className="copy-btn" 
-                                        onClick={() => copyToClipboard('0x22a79a08ddb74A9F1A4eBE5da75300Ad9f1AED76')}
-                                        aria-label="Copiar contrato de Polygon"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-
                                 <h3 className="contract-title">Nuestro contrato CARDANO</h3>
                                 <div className="contract-address cardano">
                                     <span>asset10n0du9x28k3weydqsx9204vteyzg7j09qdpq67</span>
-                                    <button 
-                                        className="copy-btn" 
-                                        onClick={() => copyToClipboard('asset10n0du9x28k3weydqsx9204vteyzg7j09qdpq67')}
-                                        aria-label="Copiar contrato de Cardano"
-                                    >
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                                        </svg>
-                                    </button>
+                                    <div className="contract-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '15px' }}>
+                                        <a 
+                                            href="https://cardanoscan.io/token/asset10n0du9x28k3weydqsx9204vteyzg7j09qdpq67" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="explore-btn" 
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                gap: '8px',
+                                                padding: '10px 15px',
+                                                backgroundColor: 'rgba(100, 202, 255, 0.15)',
+                                                color: '#64caff',
+                                                borderRadius: '8px',
+                                                border: '1px solid rgba(100, 202, 255, 0.3)',
+                                                textDecoration: 'none',
+                                                fontWeight: '500',
+                                                fontSize: '0.9rem',
+                                                transition: 'all 0.3s ease'
+                                            }}
+                                            onMouseOver={(e) => {
+                                                e.currentTarget.style.backgroundColor = 'rgba(100, 202, 255, 0.25)';
+                                                e.currentTarget.style.transform = 'translateY(-2px)';
+                                            }}
+                                            onMouseOut={(e) => {
+                                                e.currentTarget.style.backgroundColor = 'rgba(100, 202, 255, 0.15)';
+                                                e.currentTarget.style.transform = 'translateY(0)';
+                                            }}
+                                        >
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                            View on Explorer
+                                        </a>
+                                     
+                                    </div>
                                 </div>
                             </div>
                         </div>
