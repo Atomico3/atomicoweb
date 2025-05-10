@@ -9,61 +9,35 @@ import partner2 from '../assets/partners/partner2.png';
 import migration2 from '../assets/migration/migration2.png';
 import './AtomicInfo.css';
 
-// Enhanced Polygon logo SVG component with precise details and effects
+// Replace custom SVG with external image component
 const PolygonLogo = () => (
-  <svg 
-    width="100" 
-    height="100" 
-    viewBox="0 0 100 100" 
-    fill="none" 
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ 
-      margin: '0 10px', 
-      filter: 'drop-shadow(0 0 10px rgba(130, 71, 229, 0.5))'
-    }}
-  >
-    {/* Subtle background glow */}
-    <defs>
-      <radialGradient id="polygonGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-        <stop offset="0%" stopColor="#A47EFF" stopOpacity="0.3" />
-        <stop offset="100%" stopColor="#8247E5" stopOpacity="0" />
-      </radialGradient>
-      
-      {/* Main fill gradient */}
-      <linearGradient id="polygonFill" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#9B66FF" />
-        <stop offset="100%" stopColor="#7039DD" />
-      </linearGradient>
-    </defs>
-    
-    {/* Background glow effect */}
-    <circle cx="50" cy="50" r="48" fill="url(#polygonGlow)" />
-    
-    {/* Main hexagon shape with gradient */}
-    <path 
-      d="M50 7.5L85 27.5V67.5L50 87.5L15 67.5V27.5L50 7.5Z" 
-      fill="url(#polygonFill)"
-      stroke="#A67BFF"
-      strokeWidth="0.5"
-    />
-    
-    {/* Inner details - precise "P" shape that defines Polygon's logo */}
-    <path 
-      d="M62.5 48V38L50 31V21L75 35V63L62.5 56M50 63L37.5 56L25 63L50 77L75 63L62.5 56L50 63M25 35L37.5 28V38L50 45V56L25 42V35M50 21L62.5 28L75 21L50 7L25 21L37.5 28L50 21Z"
-      fill="white"
-      style={{
-        filter: 'drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2))'
+  <div style={{ 
+    margin: '0 10px',
+    boxShadow: '0 4px 10px rgba(130, 71, 229, 0.2)',
+    borderRadius: '12px',
+    overflow: 'hidden',
+    width: '110px',
+    height: '110px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'rgba(255, 255, 255, 0.05)'
+  }}>
+    <img 
+      src="https://cdn.prod.website-files.com/6340702a42dd5b18eb404a68/66c3120655492f589c640858_MATIC%20Hero%20IMG-p-800.png" 
+      alt="Polygon Logo" 
+      style={{ 
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover'
+      }}
+      onError={(e) => {
+        // Fallback in case image fails to load
+        e.currentTarget.onerror = null;
+        e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjODI0N0U1Ij48cGF0aCBkPSJNMTIgMkw1IDdMMTIgMTJMMTkgN0wxMiAyeiIvPjxwYXRoIGQ9Ik01IDE3TDEyIDIyTDE5IDE3TDE5IDdMMTIgMTJMNSA3TDUgMTd6IiBvcGFjaXR5PSIwLjgiLz48L3N2Zz4=';
       }}
     />
-    
-    {/* Highlight effect on top edge */}
-    <path 
-      d="M50 7.5L85 27.5L50 7.5Z" 
-      stroke="rgba(255, 255, 255, 0.7)"
-      strokeWidth="0.8"
-      strokeLinecap="round"
-    />
-  </svg>
+  </div>
 );
 
 export const AtomicInfo: React.FC = () => {
