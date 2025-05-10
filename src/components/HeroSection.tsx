@@ -221,16 +221,6 @@ const HeroSection: React.FC = () => {
                 </svg>
               </span>
             </a>
-            
-            <a href="https://at3selling.vercel.app/" className="hero-cta secondary">
-              <span className="cta-text">Comprar AT3</span>
-              <span className="cta-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-              </span>
-            </a>
           </div>
           
           <div className="hero-stats">
