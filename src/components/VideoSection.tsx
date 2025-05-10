@@ -4,25 +4,13 @@ import './VideoSection.css';
 
 export const VideoSection = () => {
   const [t] = useTranslation("global");
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Example video URL - replace with your actual video
-  const videoUrl = "https://www.youtube.com/embed/your-video-id?autoplay=0";
-  
-  // Handle play/pause functionality
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
+  // Video ID extracted from the URL for proper embedding
+  const videoId = "1D48M03COO8";
   
   // Check if element is in viewport for animation
   useEffect(() => {
@@ -48,6 +36,11 @@ export const VideoSection = () => {
       }
     };
   }, []);
+
+  // Function to handle click on the video thumbnail
+  const handlePlayClick = () => {
+    setShowVideo(true);
+  };
 
   return (
     <section ref={sectionRef} className="video-section">
@@ -80,10 +73,10 @@ export const VideoSection = () => {
         <div className={`video-header ${isVisible ? 'visible' : ''}`}>
           <div className="section-badge">Descubre</div>
           <h2 className="video-title">
-            {t("videoSection.title") || "Atomico 3: El Futuro del Litio en Blockchain"}
+            {"NUESTROS PROYECTOS"}
           </h2>
           <p className="video-description">
-            {t("videoSection.description") || "Descubre cómo nuestra revolucionaria propuesta combina blockchain con litio para crear un ecosistema financiero sostenible, transparente y altamente rentable."}
+            {"SALAR DE MOGNA"}
           </p>
         </div>
         
@@ -102,14 +95,70 @@ export const VideoSection = () => {
               </div>
               
               <div className="video-player">
-                <iframe
-                  src={videoUrl}
-                  title="Atomico 3 Video"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-                
+                {/* Show thumbnail with play button if video isn't loaded yet */}
+                {!showVideo ? (
+                  <div 
+                    className="video-thumbnail" 
+                    onClick={handlePlayClick}
+                    style={{
+                      backgroundImage: `url(https://img.youtube.com/vi/${videoId}/maxresdefault.jpg)`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      cursor: 'pointer',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <div className="thumbnail-overlay"></div>
+                    <div 
+                      className="play-button"
+                      style={{
+                        width: '80px',
+                        height: '80px',
+                        background: 'rgba(0, 144, 255, 0.9)',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
+                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                        position: 'absolute',
+                        zIndex: 5
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.1)';
+                        e.currentTarget.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+                      }}
+                    >
+                      <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                    </div>
+                  </div>
+                ) : (
+                  // Only show iframe when the play button is clicked
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+                    title="Atomico 3 Video"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    onLoad={() => setVideoLoaded(true)}
+                  ></iframe>
+                )}
                 <div className="video-glow"></div>
               </div>
             </div>

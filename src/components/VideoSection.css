@@ -249,6 +249,9 @@
   perspective: 1000px;
   transform: rotateX(5deg) rotateY(-5deg);
   transition: all 0.5s ease;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .video-player-wrapper:hover {
@@ -339,6 +342,7 @@
   right: 0;
 }
 
+/* Enhanced Video Player Styles */
 .video-player {
   position: relative;
   width: 100%;
@@ -349,6 +353,60 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
               0 0 0 1px rgba(100, 202, 255, 0.2);
   z-index: 3;
+}
+
+.video-player iframe,
+.video-player .video-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Add thumbnail overlay for better contrast with play button */
+.thumbnail-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+/* Enhanced play button */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px !important;
+  height: 80px !important;
+  z-index: 10;
+}
+
+.play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.video-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .video-player iframe {
