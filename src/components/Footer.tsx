@@ -1,5 +1,5 @@
 import atomicLogo from '../assets/atomicLogo.png'
-import cnv from '../cnv.png'
+// import cnv from '../cnv.png' // Eliminado
 import facebook from '../assets/social_networks/facebook.png'
 import instagram from '../assets/social_networks/instagram.png'
 import linkedin from '../assets/social_networks/linkedin.png'
@@ -60,10 +60,7 @@ export const Footer = () => {
           <div className="grid grid-cols-1 pt-8 lg:grid-cols-4 lg:pt-10">
             <div className='lg:col-span-1 flex flex-col items-center lg:items-start'>
               <img src={atomicLogo} alt="" className='w-52 lg:w-72 mx-auto lg:mx-0' />
-              <img src={cnv} alt="CNV logo" className='w-32 mt-4' />
-              <p className="text-white text-xs mt-4 max-w-md">
-                Atómico 3 S.A. Proveedor de Servicios de Activos Virtuales (PSAV) inscripto bajo el N° 103 de fecha 22 de enero de 2025 en el Registro de Proveedores de Servicios de Activos Virtuales de CNV. Este registro es a los fines del control como Sujeto Obligado ante la Unidad de Información Financiera (UIF) y de todo otro ente regulador facultado a tal efecto, en el marco de sus competencias, y no implica licencia ni supervisión por parte de la COMISIÓN NACIONAL DE VALORES sobre la actividad realizada por el PSAV.
-              </p>
+              {/* Elementos de CNV eliminados */}
             </div>
 
             <div className='lg:col-span-3 grid grid-cols-1 gap-8 sm:grid-cols-3 lg:grid-cols-4 p-3'>
@@ -156,12 +153,12 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-
-          <p className='pt-5 text-center text-sm'>
-            {t("footer.horarios")}
-          </p>
-          <p className="text-xs text-white text-center mt-5">&copy; 2025. Atómico3 S.A. {t("footer.todos los derechos reservados")}</p>
         </div>
+
+        <p className='pt-5 text-center text-sm'>
+          {t("footer.horarios")}
+        </p>
+        <p className="text-xs text-white text-center mt-5">© 2025. Atómico3 S.A. {t("footer.todos los derechos reservados")}</p>
       </footer>
     </>
   )
