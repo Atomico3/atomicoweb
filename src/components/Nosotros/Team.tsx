@@ -3,7 +3,7 @@ import luis from '../../assets/team/luis.jpg'
 import ricardo from '../../assets/team/ricardo.jpg'
 import carlos from '../../assets/team/carlos.jpg'
 import andrea from '../../assets/team/andrea.jpg'
-import juan from '../../assets/team/juan.jpg'
+
 import walter from '../../assets/team/walter.jpg'
 import franco from '../../assets/team/franco.jpg'
 import diego from '../../assets/team/diego.jpg'
@@ -146,21 +146,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
         email: "wbinda@atomico3.io"
       }
     },
-    {
-      id: 8,
-      nombre: "Juan Allan",
-      puesto: t("team.marketing_head") || "Gerencia de Prensa",
-      bio: t(".") || "..",
-      achievements: [
-      ],
-      imagen: juan,
-      alt: "Juan",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/",
-        twitter: "https://twitter.com/",
-        email: "jallan@atomico3.io"
-      }
-    },
+ 
     {
       id: 9,
       nombre: "Carlos Attias",
