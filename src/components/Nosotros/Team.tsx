@@ -3,9 +3,7 @@ import luis from '../../assets/team/luis.jpg'
 import ricardo from '../../assets/team/ricardo.jpg'
 import carlos from '../../assets/team/carlos.jpg'
 import andrea from '../../assets/team/andrea.jpg'
-
 import walter from '../../assets/team/walter.jpg'
-import franco from '../../assets/team/franco.jpg'
 import diego from '../../assets/team/diego.jpg'
 import johon from '../../assets/team/johon.jpg'
 import jorge from '../../assets/team/jorge.jpg'
@@ -162,22 +160,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
         email: "cattias@atomico3.io"
       }
     },
-    {
-      id: 10,
-      nombre: "Franco Rutigliano",
-      puesto: t("team.lead_dev") || "Tecnología & Desarrollo",
-      bio: t(".") || "..",
-      achievements: [
-      ],
-      imagen: franco,
-      alt: "Franco Rutigliano",
-      socialLinks: {
-        linkedin: "https://linkedin.com/in/",
-        twitter: "https://twitter.com/",
-        email: "frutigliano@atomico3.io"
-      }
-    },
-  ];
+   ];
   
   // Commercial Partners data
   const commercialPartners = [
