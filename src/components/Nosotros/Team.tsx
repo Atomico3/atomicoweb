@@ -62,7 +62,7 @@ Con Atómico 3, estamos trazando el camino hacia un futuro donde la digitalizaci
           socialLinks={{
             linkedin: "https://linkedin.com/in/pablorutigliano",
             twitter: "https://twitter.com/pablorutigliano",
-            email: "pablo@atomicocompany.com"
+            email: "prutigliano@atomico3.io"
           }}
         />
 
