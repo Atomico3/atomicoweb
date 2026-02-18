@@ -93,20 +93,21 @@
   },
   "atomicInfo": {
     "que es atomico": "¿Qué es Atómico3?",
-    "p1": "Es un token que representa la tokenización de los activos mineros, atados a un subyacente el Litio (respaldados por las reservas de litio certificadas bajo normas NI 43-101), que tiene cada Proyecto. ",
-    "p2": "Este proceso de digitalizar las reservas de litio, permite su comercialización en plataformas blockchain. Democratizado el acceso a la inversión en recursos naturales, ofreciendo transparencia, seguridad y liquidez. ",
-    "p3": " Con su enfoque innovador, hemos facilitado la inversión sostenible y el desarrollo económico en regiones ricas en litio, posicionándolo como un activo digital de alto valor en el mercado global.",
-    "p4": "Nuestra billetera oficial es la ",
-    "p5": "Nuestro contrato POLYGON es ",
-    "descripcion atomico p1": " Atómico3 es un token que representa la tokenización de activos mineros, respaldados por reservas de litio certificadas bajo normas ni 43-101. Este proceso digitaliza las reservas de litio, permitiendo su comercialización en plataformas blockchain.",
-    "descripcion atomico p2": "Atómico3 democratiza el acceso a la inversión en recursos naturales, ofreciendo transparencia, seguridad y liquidez. Con su enfoque innovador, Atómico3 facilita la inversión sostenible y el desarrollo económico en regiones ricas en litio, posicionándolo como un activo digital de alto valor en el mercado global.",
-    "criptoactivo responsable": "Criptoactivo Responsable",
-    "criptoactivo responsable descripcion": "Nuestro token está respaldado por litio real, con un valor que crece junto con la demanda de energía limpia.",
-    "mercado objetivo": "Mercado Objetivo",
-    "mercado objetivo descripcion": "  Inversores globales con visión. Ciudadanos comprometidos con la sostenibilidad.",
-    "plataformas utilizadas": "Plataformas Utilizadas",
-    "plataformas utilizadas descripcion": "Blockchain, redes sociales oficiales y comunidades apasionadas, holders y entusiastas de la tecnología."
-  },
+    "p1": "Atómico 3 S.A. PY es una compañía legalmente constituida en la República del Paraguay que desarrolla un modelo innovador de tokenización de activos del mundo real (RWA), orientado a integrar recursos naturales —especialmente el litio— en la economía digital global.",
+    "p2": "Nuestra misión es posicionarnos como una plataforma líder en tokenización de activos mineros, facilitando financiamiento alternativo para proyectos en todas sus etapas mediante tecnología blockchain, a través de nuestro ecosistema web. Este modelo permite canalizar inversión global hacia proyectos tradicionalmente desfinanciados, desde su fase inicial hasta la producción.",
+    "p3": "La plataforma incorpora herramientas avanzadas de trazabilidad, transparencia, cumplimiento normativo y gestión operativa, fortaleciendo la confianza entre desarrolladores e inversores.",
+    "p4": "De este modo, Atómico 3 conecta el sector minero con el capital internacional, promoviendo un ecosistema de inversión sostenible, escalable y tecnológicamente robusto.",
+    "p5": "",
+    "descripcion atomico p1": "Atómico3 desarrolla un modelo innovador de tokenización de activos del mundo real (RWA), integrando recursos naturales —especialmente el litio— en la economía digital global mediante tecnología blockchain.",
+    "descripcion atomico p2": "Nuestra plataforma facilita financiamiento alternativo para proyectos mineros en todas sus etapas, incorporando trazabilidad, transparencia y cumplimiento normativo para fortalecer la confianza entre desarrolladores e inversores.",
+    "criptoactivo responsable": "Ecosistema Tecnológico",
+    "criptoactivo responsable descripcion": "Infraestructura blockchain, trazabilidad y cumplimiento normativo diseñados para ofrecer transparencia, seguridad y confianza.",
+    "mercado objetivo": "Modelo de Inversión",
+    "mercado objetivo descripcion": "Canalización de capital global hacia proyectos mineros mediante activos digitales respaldados por el mundo real (RWA).",
+    "plataformas utilizadas": "Tecnología Utilizada",
+    "plataformas utilizadas descripcion": "Blockchain, plataforma web y herramientas avanzadas de gestión, monitoreo y transparencia operativa."
+}
+,
   "videoSection": {
     "video section title": "¡Mira el video para conocer más!"
   },
