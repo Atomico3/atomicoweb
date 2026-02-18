@@ -37,24 +37,14 @@
     "logout": "Cerrar sesión"
   },
   "nosotros": {
-    "title": "Somos una compañía legalmente constituida en Paraguay, dedicada al desarrollo y optimización de la actividad minera. Les aportamos la herramienta de la tokenización de las reservas de litio certificadas, buscando con esto innovar y revolucionar la industria de la electromovilidad. ",
-    "nosotros": "Nosotros",
-    "title p1": "Al convertir las reservas de litio en tokens digitales, les facilitamos a la industria minera la financiación de su operatoria, contribuyendo al desarrollo de su actividad integral, y a la transición hacia un futuro más sostenible.",
-    "p1": "Somos una compañía legalmente constituida en la Republica del Paraguay, dedicados al desarrollo y optimización de la actividad minera. En particular a la minería del Litio.",
-    "p2": "Aportamos a la actividad Minera, la herramienta de la tokenización (de sus reservas de litio certificadas), buscando con esto innovar y revolucionar la industria de la electromovilidad a nivel mundial.   Mediante la conversión de dichas reservas de litio certificadas en tokens digitales, facilitamos a la industria la financiación de su operatoria. Contribuyendo al desarrollo de su actividad integral, y a la transición hacia un futuro más sostenible. ",
-    "p3": " El token Atómico3, bajo la sigla “AT3”, está diseñado para representar la tokenización de las reservas de litio. La emisión actual de AT3 es de 100,000,000,000 tokens, cada uno respaldado por reservas certificadas de litio conforme a las normas internacionales NI 43-101. ",
-    "p4": "  El contrato blockchain que respalda esta emisión es el número: 0x22a79a08ddb74A9F1A4eBE5da75300Ad9f1AED76, y con ello, garantiza la integridad y la transparencia de los activos subyacentes.",
-    "p5": "La compañía utiliza un modelo innovador de tokenización de activos del mundo real (RWA, por sus siglas en inglés), para facilitar la integración de recursos naturales en la economía digital. Buscamos, transformar el mercado global del litio al pretender declararlo un commodity. ",
-    "p6": "La marca y la patente asociadas a este modelo están registradas bajo la titularidad del CEO- Fundador de Atómico 3 SA, Lic. Pablo Rutigliano, con el código internacional clase número 9. Todos los derechos relacionados con la marca y el modelo están formalmente registrados y son de uso exclusivo de Atómico 3 S.A.",
-    "p7": " De esta manera, AT3 se perfila para desarrollar sus precios en función de las reservas mineras, permitiendo así establecer una relación directa entre AT3 (Átomico3) y el precio del Li₂CO₃ (carbonato de litio grado batería). En conclusión, 1 AT3 equivaldrá al precio de 1 kilogramo de carbonato de litio.",
-    "p8": "        ",
-    "Nuestros Valores": "Nuestros Valores",
-    "Propósito": "Propósito",
-    "Propósito descripcion": "Contribuir al desarrollo de la actividad minera de Latinoamérica mediante la tokenización de los activos mineros, colaborando en ser la herramienta financiera del desarrollo de la minería.",
-    "Visión": "Visión",
-    "Visión descripcion": "Queremos revolucionar la manera en que se gestionan y se invierte en recursos naturales mediante la aplicación de tecnologías avanzadas de tokenización y blockchain.",
-    "Misión": "Misión",
-    "Misión descripcion": "Mejorar la eficiencia y la transparencia del mercado de litio, abrir nuevas oportunidades para inversores y contribuir al desarrollo económico global."
+  "nosotros": "Nosotros",
+    "title": "Somos una compañía legalmente constituida en la República del Paraguay, dedicada al desarrollo y optimización de soluciones tecnológicas aplicadas a la actividad minera, con especial foco en proyectos vinculados al litio.",
+    "p1": "Contribuimos al sector mediante herramientas de tokenización orientadas a representar digitalmente información y valor asociado a reservas minerales certificadas, facilitando mecanismos innovadores de financiación y visibilidad internacional para la industria. Este enfoque busca acompañar la evolución del sector hacia modelos más eficientes, transparentes y alineados con la transición energética global.",
+    "p2": "El token Atómico3, identificado bajo la sigla “AT3”, ha sido diseñado como un activo digital dentro del ecosistema Atómico 3, vinculado conceptualmente a proyectos y reservas de litio certificadas conforme a estándares internacionales como NI 43-101. La emisión total prevista es de 100.000.000.000 de unidades.",
+    "p3": "El contrato blockchain asociado a AT3 se encuentra registrado públicamente bajo el identificador 0x22a79a08ddb74A9F1A4eBE5da75300Ad9f1AED76, permitiendo la trazabilidad, verificabilidad y transparencia del registro digital de las operaciones dentro de la red.",
+    "p4": "La compañía desarrolla un modelo de tokenización de activos del mundo real (RWA) orientado a integrar recursos naturales en entornos digitales, promoviendo nuevas formas de interacción entre proyectos productivos y actores globales del ecosistema tecnológico y financiero.",
+    "p5": "La marca y los desarrollos asociados al modelo Atómico 3 se encuentran registrados conforme a las normativas vigentes, bajo titularidad de su fundador, Pablo Rutigliano, dentro de la clase internacional correspondiente.",
+    "p6": "AT3 se proyecta como un instrumento digital cuyo comportamiento puede vincularse referencialmente a la evolución del mercado del litio, en particular al carbonato de litio grado batería (Li₂CO₃), como indicador sectorial relevante dentro de la industria."
   },
   "header": {
     "bienvenido": "Bienvenido a Atómico3",
