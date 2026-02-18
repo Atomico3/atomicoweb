@@ -225,14 +225,14 @@ const HeroSection: React.FC = () => {
           
           <div className="hero-stats">
             <div className="stat-item">
-              <div className="stat-number">9K+</div>
+              <div className="stat-number">300+</div>
               <div className="stat-label">Inversores</div>
             </div>
             
             <div className="stat-divider"></div>
             
             <div className="stat-item">
-              <div className="stat-number">$2.3M</div>
+              <div className="stat-number">$120k</div>
               <div className="stat-label">Capitalización</div>
             </div>
             

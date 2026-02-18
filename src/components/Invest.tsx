@@ -155,12 +155,12 @@ export const Invest = () => {
           
           <div className="invest-stats">
             <div className="stat-item">
-              <div className="stat-value"><span className="counter">9000</span>+</div>
+              <div className="stat-value"><span className="counter">300</span>+</div>
               <div className="stat-label">Inversores</div>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <div className="stat-value">$<span className="counter">2.3</span>M</div>
+              <div className="stat-value">$<span className="counter">120</span>k</div>
               <div className="stat-label">Capitalización</div>
             </div>
             <div className="stat-divider"></div>
@@ -171,7 +171,7 @@ export const Invest = () => {
           </div>
           
           <div className="invest-cta">
-            <a href="https://at3selling.vercel.app/" className="invest-button primary">
+            <a href="/" className="invest-button primary">
               <span>Invertir ahora</span>
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
