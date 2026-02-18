@@ -174,7 +174,7 @@ export const VideoSection = () => {
                   </svg>
                 </div>
                 <div className="stat-details">
-                  <div className="stat-value">300</div>
+                  <div className="stat-value">300+</div>
                   <div className="stat-label">Inversores</div>
                 </div>
               </div>
