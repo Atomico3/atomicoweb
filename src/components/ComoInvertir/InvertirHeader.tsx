@@ -39,7 +39,7 @@ export const InvertirHeader = () => {
               <div className=" mt-4 sm:mt-8 flex flex-col justify-center items-center sm:flex-row sm:justify-between w-4/5 mx-auto gap-4">
             
                 <Link
-                  to={'https://at3selling.vercel.app/'}
+                  to={'/'}
                   className="w-full sm:w-1/3 max-w-[270px] lg:max-w-[200px] bg-celeste hover:bg-sky-500 py-2 lg:py-3 rounded-md px-6 text-xs sm:text-sm lg:text-sm text-center hover:cursor-pointer"
                 >
                  {t("comprarAt3.comprarAt3")}

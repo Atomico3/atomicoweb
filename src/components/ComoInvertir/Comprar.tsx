@@ -57,7 +57,7 @@ export const Comprar = () => {
 
                     <div className='flex justify-center items-center px-5 md:px-0'>
                         <iframe
-                            src="https://at3selling.vercel.app/"
+                            src="/"
                             title="Compra Atomico3"
                             style={{
                                 width: '100%',

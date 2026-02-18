@@ -67,7 +67,7 @@ export const PeerToPeer = () => {
                                     <button className=''>{t("invertir.ver tutoriales")}</button>
                                 </Link>
                                 <a className='flex items-center justify-center ml-5 w-2/3 max-w-[150px] lg:max-w-[200px] md:w-full bg-blue-50 border border-celeste text-celeste    py-2 lg:py-2 rounded-md px-6 text-xs sm:text-sm lg:text-lg text-center hover:cursor-pointer transition hover:bg-blue-200 hover:text-blue-800'
-                                    href='https://atomico3dapp.vercel.app/' target='_blank'>
+                                    href='/' target='_blank'>
                                     <button className='' >Peer to Peer</button>
                                 </a>
                             </div>

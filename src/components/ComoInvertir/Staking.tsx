@@ -100,7 +100,7 @@ export const Staking = () => {
                                 {t("invertir.ver tutoriales")}
                             </Link>
                             <a className='ml-5 w-2/3 max-w-[150px] lg:max-w-[200px] md:w-full bg-blue-50 border border-celeste text-celeste py-2 lg:py-2 rounded-md px-6 text-xs sm:text-sm lg:text-base text-center hover:cursor-pointer transition hover:bg-blue-200 hover:text-blue-800'
-                                href='https://atomico3dapp.vercel.app/' target='_blank'>
+                                href='/' target='_blank'>
                                 Staking
                             </a>
                         </div>

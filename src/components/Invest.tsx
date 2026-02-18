@@ -160,7 +160,7 @@ export const Invest = () => {
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <div className="stat-value">$<span className="counter">120</span>k</div>
+              <div className="stat-value">$<span className="counter">45</span>k</div>
               <div className="stat-label">Capitalización</div>
             </div>
             <div className="stat-divider"></div>

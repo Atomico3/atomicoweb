@@ -552,7 +552,7 @@ const Invertir: React.FC = () => {
               </div>
               
               <div className="cta-buttons">
-                <Link to="https://at3selling.vercel.app/" className="cta-button primary">
+                <Link to="/" className="cta-button primary">
                   {t("invertir.Invertir ahora")}
                   <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
