@@ -508,7 +508,7 @@ export const Navbar = () => {
                               Staking
                             </Link>
                             <a
-                              href="https://at3selling.vercel.app/"
+                              href="/"
                               target='_blank'
                               className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                               role="menuitem"
@@ -1193,7 +1193,7 @@ export const Navbar = () => {
                             Staking
                           </Link>
                           <a
-                            href="https://dapp-at-3.vercel.app/"
+                            href="/"
                             target='_blank'
                             className="block rounded-lg px-4 py-2 text-sm text-white hover:bg-gray-50 hover:text-blue-500"
                             role="menuitem"
